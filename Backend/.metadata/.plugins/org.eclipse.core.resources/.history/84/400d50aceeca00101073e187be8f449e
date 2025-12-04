@@ -1,0 +1,30 @@
+package com.example.CareerPT.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.example.CareerPT.dto.UserDTO;
+import com.example.CareerPT.entity.User;
+import com.example.CareerPT.repository.UserRepository;
+
+@Service(value="userService")
+public class UserServiceImpl implements UserService{
+	
+	@Autowired 
+	private UserRepository userRepository;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	@Override
+	public UserDTO registerUser(UserDTO userDTO) {
+		
+		userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+		User user = userDTO.toEntity();
+		user= userRepository.save(user);
+		return user.toDTO();
+		
+	}
+
+}

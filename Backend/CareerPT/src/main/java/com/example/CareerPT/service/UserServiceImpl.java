@@ -1,0 +1,60 @@
+package com.example.CareerPT.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.example.CareerPT.dto.LoginDTO;
+import com.example.CareerPT.dto.UserDTO;
+import com.example.CareerPT.entity.User;
+import com.example.CareerPT.exception.JobPortalException;
+import com.example.CareerPT.repository.UserRepository;
+
+@Service(value="userService")
+public class UserServiceImpl implements UserService{
+	
+	@Autowired 
+	private UserRepository userRepository;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	@Override
+	public UserDTO registerUser(UserDTO userDTO) throws JobPortalException {
+
+	    Optional<User> optional = userRepository.findByEmail(userDTO.getEmail());
+	    if (optional.isPresent())
+	        throw new JobPortalException("USER_FOUND");
+
+	    User user = userDTO.toEntity();
+
+	    // ENCODE HERE → correct
+	    user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+
+	    user = userRepository.save(user);
+
+	    // do NOT send password back
+	    UserDTO response = user.toDTO();
+	    response.setPassword(null);
+
+	    return response;
+	}
+
+
+	@Override
+	public List<User> getAllusers() {
+		return userRepository.findAll() ;
+	}
+
+	@Override
+	public UserDTO loginUser(LoginDTO loginDTO) throws JobPortalException{
+	
+		User user= userRepository.findByEmail(loginDTO.getEmail()).orElseThrow(()-> new JobPortalException("USER_NOT_FOUND"));
+		if(!passwordEncoder.matches(loginDTO.getPassword(),user.getPassword()))throw new JobPortalException("INVALID_CREDENTIALS");
+		return user.toDTO();
+	}
+
+}

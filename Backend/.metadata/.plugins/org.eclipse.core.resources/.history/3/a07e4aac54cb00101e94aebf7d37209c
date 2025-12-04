@@ -1,0 +1,10 @@
+package com.example.CareerPT.service;
+
+import com.example.CareerPT.dto.UserDTO;
+import com.example.CareerPT.exception.JobPortalException;
+
+public interface UserService {
+	
+	public UserDTO registerUser(UserDTO userDTO) throws JobPortalException;
+
+}

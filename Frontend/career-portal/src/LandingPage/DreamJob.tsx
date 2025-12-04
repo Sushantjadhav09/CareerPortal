@@ -10,8 +10,8 @@ const DreamJob = () => {
             <div className='text-6xl font-bold leading-tight text-gray-100 [&>span]:text-amber-400'>Find your <span> dream</span> <span> job</span> with us</div>
             <div className='text-gray-200'>Good life begins witha good company. Start explore thousands of jobs in one place.</div>
             <div className='flex gap-3 mt-5'>
-                 <TextInput className='bg-gray-900 rounded-lg p-1 px-2 text-gray-100 [&_input]:text-gray-100!' variant="unstyled" label="Job Title" placeholder="Software Engineer"/>
-                 <TextInput className='bg-gray-900 rounded-lg p-1 px-2 text-gray-100 [&_input]:text-gray-100!' variant="unstyled" label="Job Type" placeholder="Full Time"/>
+                 <TextInput className='bg-gray-700 rounded-lg p-1 px-2 text-gray-100 [&_input]:text-gray-100!' variant="unstyled" label="Job Title" placeholder="Software Engineer"/>
+                 <TextInput className='bg-gray-700 rounded-lg p-1 px-2 text-gray-100 [&_input]:text-gray-100!' variant="unstyled" label="Job Type" placeholder="Full Time"/>
                  <div className='flex items-center justify-center h-full w-20 bg-amber-400 text-gray-100 rounded-lg p-2 hover:bg-amber-500 cursor-pointer'>
                     <Search className='h-[85%] w-[85%]'/>
                  </div>

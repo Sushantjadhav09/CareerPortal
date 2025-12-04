@@ -1,0 +1,22 @@
+package com.example.CareerPT.service;
+
+import java.util.List;
+
+import com.example.CareerPT.dto.LoginDTO;
+import com.example.CareerPT.dto.UserDTO;
+import com.example.CareerPT.entity.User;
+import com.example.CareerPT.exception.JobPortalException;
+
+import jakarta.validation.Valid;
+
+public interface UserService {
+	
+	
+
+	public UserDTO registerUser(UserDTO userDTO) throws JobPortalException;
+	
+	public List<User> getAllusers();
+
+	public UserDTO loginUser(LoginDTO loginDTO);
+
+}

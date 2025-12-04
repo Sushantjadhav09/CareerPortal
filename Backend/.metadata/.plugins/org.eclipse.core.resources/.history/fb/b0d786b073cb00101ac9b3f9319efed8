@@ -1,0 +1,5 @@
+package com.example.CareerPT.dto;
+
+public class LoginDTO {
+
+}
