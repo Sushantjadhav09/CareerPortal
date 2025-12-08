@@ -1,4 +1,0 @@
-user.name.absent=username is null or blank.
-user.email.absent=Email is null or blank.
-user.email.invalid=Email is invalid.
-user.pass 

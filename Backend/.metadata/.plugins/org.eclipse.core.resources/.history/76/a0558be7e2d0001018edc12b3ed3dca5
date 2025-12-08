@@ -23,7 +23,7 @@ public class UserDTO {
     private String password;
     private AccountType accountType;
 
-    public UserDTO() {}  
+    public UserDTO() {}   // IMPORTANT for JSON
 
     public UserDTO(Long id, String name, String email, String password, AccountType accountType) {
         this.id = id;
@@ -33,6 +33,7 @@ public class UserDTO {
         this.accountType = accountType;
     }
 
+    // ⭐ MANDATORY – Jackson needs getters & setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

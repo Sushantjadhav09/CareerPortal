@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom"
 
 const Footer = () => {
     const location = useLocation();
-  return ( location.pathname!="/signup"?
+  return ( location.pathname!="/signup"&& location.pathname!="/login"? 
     <div className="p-20 pb-5 flex gap-5 justify-around bg-gray-800 font-['poppins']"> 
         <div className="w-1/4 flex flex-col gap-4">
               <div className='flex gap-1  text-amber-400'>

@@ -1,5 +1,0 @@
-package com.example.CareerPT.exception;
-
-public class JobPortalException {
-
-}

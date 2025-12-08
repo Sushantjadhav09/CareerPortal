@@ -12,7 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users") // important
+@Table(name = "users") 
 public class User {
 
     @Id
@@ -86,7 +86,7 @@ public class User {
 	            this.id,
 	            this.name,
 	            this.email,
-	            null,              // NEVER send password
+	            null,             
 	            this.accountType
 	    );
 	}
