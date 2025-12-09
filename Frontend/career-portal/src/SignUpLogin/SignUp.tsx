@@ -4,6 +4,10 @@ import { Link } from "react-router-dom"
 import  {At, Password } from 'tabler-icons-react'
 import { registerUser } from "../Services/UserServices";
 import { signupValidation } from "../Services/FormValidation";
+import { notifications } from '@mantine/notifications';
+
+
+
 
   const form = {
     name :"",
@@ -17,8 +21,8 @@ import { signupValidation } from "../Services/FormValidation";
 
 const SignUp = () => {
    const [value, setValue] = useState('react');
-   const [data, setData] = useState(form);
-   const [formError, setFormError] = useState(form);
+   const [data, setData] = useState<{[key:string]:string}>(form);
+   const [formError, setFormError] = useState<{[key:string]:string}>(form);
    const handleChange =(event:any)=>{
     console.log(event);
     if(typeof(event)=="string"){
@@ -39,9 +43,39 @@ const SignUp = () => {
       
    }
    const handleSubmit=() => {
-    registerUser(data).then((res)=>{
-      console.log(res);
-    }).catch((err)=>console.log(err));
+    let valid = true, newFormError:{[key:string]:string}={};
+    for(let key in data){
+      if(key === "accountType")continue;
+      if(key !== "confirmPassword")newFormError[key]=signupValidation(key,data[key]);
+      else if(data[key] !== data["password"])newFormError[key]="Password do not match"
+      if(newFormError[key])valid=false;
+    }
+    setFormError(newFormError);
+    console.log(valid)
+    
+    if(valid === true){
+      registerUser(data).then((res)=>{
+        console.log(res);
+        notifications.show({
+       title: 'Registered Successfully',
+       message: 'Redirecting to login page..',
+       color:"teal",
+       withBorder:true,
+       className:"!border-green-500"
+     })
+      }).catch((err)=>{
+        console.log(err);
+        notifications.show({
+       title: 'Registration Failed',
+       message: err.response.data.errorMessage,
+       color:"red",
+       withBorder:true,
+       className:"!border-red-500"
+     })
+      });
+      
+        
+    }
    }
   return (
     <div className="w-1/2 px-20 flex flex-col justify-center gap-3">

@@ -20,4 +20,17 @@ const signupValidation=(name:string,value:string)=>{
 
     }
 }
-export {signupValidation};
+const loginValidation=(name:string,value:string)=>{
+
+    switch(name){
+            case "email":
+                if(value.length===0)return "Email is Required"
+                return "";
+            case "password":
+                if(value.length===0)return "Passowrd is Required"
+                return"";
+            default:
+                    return "";
+    }
+}
+export {signupValidation,loginValidation};
