@@ -4,6 +4,7 @@ import { At  } from 'tabler-icons-react'
 import { loginUser, registerUser } from '../Services/UserServices';
 import { loginValidation } from '../Services/FormValidation';
 import { notifications } from '@mantine/notifications';
+import { Link } from 'react-router-dom';
 
 
  const form = {
@@ -55,7 +56,7 @@ const Login = () => {
          <TextInput value={data.email} error={formError.email} name="email" onChange={handleChange} className="text-gray-200" withAsterisk leftSection={<At size={16} />} label="Email" placeholder="Your email"/>
          <PasswordInput value={data.password} error={formError.password} name="password" onChange={handleChange} withAsterisk className="text-gray-200" label="Password" placeholder="Enter the password" />
          <Button onClick={handleSubmit} color="yellow" autoContrast variant="filled">Login</Button>
-         <div className="mx-auto text-gray-200">Don't have an account? <a href="/signup" className="text-amber-400 hover:underline">Sign Up</a></div>
+         <div className="mx-auto text-gray-200">Don't have an account? <Link to="/signup" className="text-amber-400 hover:underline">Sign Up</Link></div>
       
     </div>
   )

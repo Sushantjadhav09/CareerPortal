@@ -1,0 +1,23 @@
+import { talents } from '../Data/TalentData'
+import Sort from '../FindJobs/Sort'
+import TalentCard from './TalentCard'
+
+const Talent = () => {
+  return (
+    <div className='p-5'>
+        <div className='flex justify-between'>
+            <div className='text-2xl font-semibold'>Talents</div>
+            <Sort/>
+        </div>
+        <div className='m-12 flex flex-wrap justify-between gap-3'>
+            {
+                talents.map((talent,index) =><TalentCard key={index} {...talent}/>)
+            }
+
+        </div>
+        
+    </div>
+  )
+}
+
+export default Talent

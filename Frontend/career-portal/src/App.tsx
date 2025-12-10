@@ -12,6 +12,7 @@ import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import SignUpPage from './Pages/SignUpPage';
 import { Notifications } from '@mantine/notifications';
+import FindTalentPage from './Pages/FindTalentPage';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,6 +24,7 @@ function App() {
       <Header/>
       <Routes>
         <Route path='/find-jobs' element={<FindJobs/>}/>
+        <Route path='/find-talents' element={<FindTalentPage/>}/>
         <Route path='/signup' element={<SignUpPage/>}/>
         <Route path='/login' element={<SignUpPage/>}/>
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import Sort from './Sort'
 import JobCards from './JobCards'
+import { jobList } from '../Data/JobsData'
 
 const Jobs = () => {
   return (
@@ -9,7 +10,12 @@ const Jobs = () => {
             <div className='text-2xl font-semibold'>Recommended Jobs</div>
             <Sort/>
         </div>
-        <JobCards/>
+        <div className='m-12 flex flex-wrap justify-between gap-9'>
+        {
+          jobList.map((job,index)=><JobCards key={index} {...job} />)
+        }
+        </div>
+        
     </div>
   )
 }
