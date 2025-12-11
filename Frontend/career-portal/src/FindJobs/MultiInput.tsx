@@ -21,8 +21,6 @@ const MultiInput = (props:any) => {
   data={props.options}
   maxValues={6}
   searchable
-  
-  
 />
 
   )
