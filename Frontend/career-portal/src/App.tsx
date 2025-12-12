@@ -17,6 +17,7 @@ import FindTalentPage from './Pages/FindTalentPage';
 import TalentProfilePage from './Pages/TalentProfilePage';
 import PostJobPage from './Pages/PostJobPage';
 import JobDescPage from './Pages/JobDescPage';
+import ApplyJobPage from './Pages/ApplyJobPage';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -32,6 +33,7 @@ function App() {
         <Route path='/find-talents' element={<FindTalentPage/>}/>
         <Route path='/talent-profile' element={<TalentProfilePage/>}/>
         <Route path='/jobs' element={<JobDescPage/>}/>
+        <Route path='/apply-job' element={<ApplyJobPage/>}/>
         <Route path='/post-job' element={<PostJobPage/>}/>
         <Route path='/signup' element={<SignUpPage/>}/>
         <Route path='/login' element={<SignUpPage/>}/>
