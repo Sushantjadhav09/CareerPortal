@@ -1,18 +1,34 @@
-import { Button, Divider, FileInput, NumberInput, Textarea, TextInput } from '@mantine/core'
-import { IconPaperclip } from '@tabler/icons-react'
+import { Button, Divider, FileInput, LoadingOverlay, Notification, NumberInput, rem, Textarea, TextInput } from '@mantine/core'
+import { IconCheck, IconPaperclip } from '@tabler/icons-react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const ApplyJobComp = () => {
     const [preview, setPreview]=useState(false)
     const [submit, setSubmit] = useState(false)
+    const [sec, setSec] = useState(5)
+    const navigate = useNavigate();
+    
     const handlePreveiw = ()=>{
         setPreview(!preview)
     }
     const handleSubmit =()=>{
         setSubmit(true)
+        let x=5;
+        setInterval(() => {
+            x--;
+            setSec(x);
+            if(x==0)navigate('/find-jobs')
+        }, 1000);
     }
-  return (
+  return (<>
     <div className='w-2/3 mx-auto '> 
+    <LoadingOverlay className='fixed!'
+    visible={submit}
+    zIndex={1000}
+    overlayProps={{radius:'sm', blur:2}}
+    loaderProps={{color:'yellow',type:'bars'}}
+    />
          <div className='flex justify-between mb-10 '>
             <div className='flex gap-2 items-center '>
                 <div className='p-3 bg-gray-600 rounded-xl '>
@@ -50,6 +66,10 @@ const ApplyJobComp = () => {
                 
            </div>
     </div>
+    <Notification className={`border-amber-400! z-1001 fixed! top-0 left-[35%] -translate-y-20 ${submit?"translate-y-0":""} transition duration-300 ease-in-out`} icon={<IconCheck style={{width:rem(20), height:rem(20)}}/>} color='teal' withBorder mt='md' title='Application Submitted' >
+        Redirecting to find jobs in {sec} seconds..
+    </Notification>
+    </>
   )
 }
 

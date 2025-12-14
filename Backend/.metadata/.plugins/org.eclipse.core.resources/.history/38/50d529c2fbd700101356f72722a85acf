@@ -1,0 +1,28 @@
+package com.example.CareerPT.entity;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import com.example.CareerPT.dto.Applicant;
+
+import jakarta.persistence.Id;
+
+
+public class Job {
+	
+	@Id
+	private Long id;
+	private String jobTitle;
+	private String company;
+	private List<Applicant>applicants;
+	private String about;
+	private String experience;
+	private String location;
+	private String jobtype;
+	private Long packageOffered;
+	private LocalDateTime postTime;
+	private String description;
+	private List<String>skillsRequired;
+	private Jobstatus jobStatus;
+
+}
