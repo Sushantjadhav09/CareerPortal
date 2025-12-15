@@ -7,8 +7,13 @@ import com.example.CareerPT.dto.Applicant;
 import com.example.CareerPT.dto.JobDTO;
 import com.example.CareerPT.enums.JobStatus;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,10 +21,12 @@ import jakarta.persistence.Table;
 public class Job {
 	
 	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String jobTitle;
 	private String company;
-	private List<Applicant>applicants;
+	@OneToMany(mappedBy = "job", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ApplicantEntity> applicants;
 	private String about;
 	private String experience;
 	private String location;
@@ -27,12 +34,13 @@ public class Job {
 	private Long packageOffered;
 	private LocalDateTime postTime;
 	private String description;
+	@ElementCollection
 	private List<String>skillsRequired;
 	private JobStatus jobStatus;
 	
 	public Job(){};
 
-	public Job(Long id, String jobTitle, String company, List<Applicant> applicants, String about, String experience,
+	public Job(Long id, String jobTitle, String company, List<ApplicantEntity> applicants, String about, String experience,
 			String location, String jobtype, Long packageOffered, LocalDateTime postTime, String description,
 			List<String> skillsRequired, JobStatus jobStatus) {
 		super();
@@ -75,11 +83,11 @@ public class Job {
 		this.company = company;
 	}
 
-	public List<Applicant> getApplicants() {
+	public List<ApplicantEntity> getApplicants() {
 		return applicants;
 	}
 
-	public void setApplicants(List<Applicant> applicants) {
+	public void setApplicants(List<ApplicantEntity> applicants) {
 		this.applicants = applicants;
 	}
 
@@ -156,11 +164,35 @@ public class Job {
 	};
 	
 	public JobDTO toDTO() {
-		return new JobDTO(this.id,this.jobTitle,this.company,this.applicants,this.about,
-				this.experience,this.location,this.jobtype,this.packageOffered,this.postTime,
-				this.description,this.skillsRequired,this.jobStatus
-				);
+
+	    List<Applicant> applicantDTOs =
+	            applicants == null
+	                    ? List.of()
+	                    : applicants.stream()
+	                        .map(a -> new Applicant(
+	                                a.getApplicantId(),
+	                                a.getTimestamp(),
+	                                a.getApplicationStatus()
+	                        ))
+	                        .toList();
+
+	    return new JobDTO(
+	            id,
+	            jobTitle,
+	            company,
+	            applicantDTOs,
+	            about,
+	            experience,
+	            location,
+	            jobtype,
+	            packageOffered,
+	            postTime,
+	            description,
+	            skillsRequired,
+	            jobStatus
+	    );
 	}
+
 	
 	
 

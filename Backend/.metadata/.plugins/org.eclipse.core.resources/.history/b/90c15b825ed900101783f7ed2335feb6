@@ -1,0 +1,27 @@
+package com.example.CareerPT.entity;
+
+import java.time.LocalDateTime;
+
+import com.example.CareerPT.enums.ApplicationStatus;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "applicants")
+public class ApplicantEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long applicantId;
+
+    private LocalDateTime timestamp;
+
+    @Enumerated(EnumType.STRING)
+    private ApplicationStatus applicationStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "job_id")   // foreign key
+    private Job job;
+
+    public ApplicantEntity() {}
+}

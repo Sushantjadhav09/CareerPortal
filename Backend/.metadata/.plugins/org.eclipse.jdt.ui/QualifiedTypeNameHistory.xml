@@ -20,7 +20,6 @@
     <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
     <fullyQualifiedTypeName name="com.example.CareerPT.service.ProfileService"/>
     <fullyQualifiedTypeName name="com.example.CareerPT.repository.ProfileRepository"/>
-    <fullyQualifiedTypeName name="javax.swing.text.Utilities"/>
     <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
     <fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
     <fullyQualifiedTypeName name="java.beans.BeanProperty"/>
@@ -32,7 +31,6 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="lombok.Data"/>
     <fullyQualifiedTypeName name="org.springframework.security.crypto.password.PasswordEncoder"/>
-    <fullyQualifiedTypeName name="com.example.CareerPT.exception.JobPortalException"/>
     <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.Getter"/>
@@ -44,4 +42,6 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="com.example.CareerPT.repository.JobRepository"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="javax.swing.text.Utilities"/>
+    <fullyQualifiedTypeName name="com.example.CareerPT.exception.JobPortalException"/>
 </qualifiedTypeNameHistroy>

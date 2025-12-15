@@ -1,0 +1,14 @@
+package com.example.CareerPT.service;
+
+import com.example.CareerPT.dto.JobDTO;
+import com.example.CareerPT.exception.JobPortalException;
+
+
+public interface JobService {
+
+	public JobDTO postJob( JobDTO jobDTO) throws JobPortalException;
+
+	public Object getALLJobs();
+	
+
+}

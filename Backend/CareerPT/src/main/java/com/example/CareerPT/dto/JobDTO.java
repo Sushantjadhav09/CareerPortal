@@ -3,52 +3,64 @@ package com.example.CareerPT.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.example.CareerPT.entity.ApplicantEntity;
 import com.example.CareerPT.entity.Job;
 import com.example.CareerPT.enums.JobStatus;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
-@Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class JobDTO {
-	
-	@Id
-	private Long id;
-	private String jobTitle;
-	private String company;
-	private List<Applicant>applicants;
-	private String about;
-	private String experience;
-	private String location;
-	private String jobtype;
-	private Long packageOffered;
-	private LocalDateTime postTime;
-	private String description;
-	private List<String>skillsRequired;
-	private JobStatus jobStatus;
-	
-	public JobDTO(){}
 
-	public JobDTO(Long id, String jobTitle, String company, List<Applicant> applicants, String about, String experience,
-			String location, String jobtype, Long packageOffered, LocalDateTime postTime, String description,
-			List<String> skillsRequired, JobStatus jobStatus) {
-		super();
-		this.id = id;
-		this.jobTitle = jobTitle;
-		this.company = company;
-		this.applicants = applicants;
-		this.about = about;
-		this.experience = experience;
-		this.location = location;
-		this.jobtype = jobtype;
-		this.packageOffered = packageOffered;
-		this.postTime = postTime;
-		this.description = description;
-		this.skillsRequired = skillsRequired;
-		this.jobStatus = jobStatus;
-	}
+    private Long id;
+    private String jobTitle;
+    private String company;
+    private List<Applicant> applicants; // ✅ DTO, not Entity
+    private String about;
+    private String experience;
+    private String location;
+    private String jobtype;
+    private Long packageOffered;
+    private LocalDateTime postTime;
+    private String description;
+    private List<String> skillsRequired;
+    private JobStatus jobStatus;
 
-	public Long getId() {
+    public JobDTO() {}
+
+    public JobDTO(
+            Long id,
+            String jobTitle,
+            String company,
+            List<Applicant> applicants,
+            String about,
+            String experience,
+            String location,
+            String jobtype,
+            Long packageOffered,
+            LocalDateTime postTime,
+            String description,
+            List<String> skillsRequired,
+            JobStatus jobStatus
+    ) {
+        this.id = id;
+        this.jobTitle = jobTitle;
+        this.company = company;
+        this.applicants = applicants;
+        this.about = about;
+        this.experience = experience;
+        this.location = location;
+        this.jobtype = jobtype;
+        this.packageOffered = packageOffered;
+        this.postTime = postTime;
+        this.description = description;
+        this.skillsRequired = skillsRequired;
+        this.jobStatus = jobStatus;
+    }
+
+    
+    // getters & setters omitted for brevity
+
+    public Long getId() {
 		return id;
 	}
 
@@ -150,13 +162,46 @@ public class JobDTO {
 
 	public void setJobStatus(JobStatus jobStatus) {
 		this.jobStatus = jobStatus;
-	};
-	public Job  toEntity() {
-		return new Job(this.id,this.jobTitle,this.company,this.applicants,this.about,
-				this.experience,this.location,this.jobtype,this.packageOffered,this.postTime,
-				this.description,this.skillsRequired,this.jobStatus
-				);
-	
 	}
+
+
+	    // ✅ Replace this existing method
+	    public Job toEntity() {
+	        Job job = new Job(
+	            this.id,
+	            this.jobTitle,
+	            this.company,
+	            null, // will set later
+	            this.about,
+	            this.experience,
+	            this.location,
+	            this.jobtype,
+	            this.packageOffered,
+	            this.postTime,
+	            this.description,
+	            this.skillsRequired,
+	            this.jobStatus
+	        );
+
+	        if (this.applicants != null) {
+	            List<ApplicantEntity> applicantEntities = this.applicants.stream()
+	                .map(a -> {
+	                    ApplicantEntity entity = new ApplicantEntity();
+	                    // Do NOT set entity.setApplicantId(a.getApplicantId()); ← remove this line
+	                    entity.setTimestamp(a.getTimestamp());
+	                    entity.setApplicationStatus(a.getApplicationStatus());
+	                    entity.setJob(job); // link to parent
+	                    return entity;
+	                })
+	                .toList();
+
+	            job.setApplicants(applicantEntities);
+	        }
+
+
+	        return job;
+	    }
+	
+
 
 }

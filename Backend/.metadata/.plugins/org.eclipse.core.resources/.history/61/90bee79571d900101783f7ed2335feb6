@@ -1,0 +1,80 @@
+package com.example.CareerPT.dto;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import com.example.CareerPT.entity.Job;
+import com.example.CareerPT.enums.JobStatus;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class JobDTO {
+
+    private Long id;
+    private String jobTitle;
+    private String company;
+    private List<Applicant> applicants; // ✅ DTO, not Entity
+    private String about;
+    private String experience;
+    private String location;
+    private String jobtype;
+    private Long packageOffered;
+    private LocalDateTime postTime;
+    private String description;
+    private List<String> skillsRequired;
+    private JobStatus jobStatus;
+
+    public JobDTO() {}
+
+    public JobDTO(
+            Long id,
+            String jobTitle,
+            String company,
+            List<Applicant> applicants,
+            String about,
+            String experience,
+            String location,
+            String jobtype,
+            Long packageOffered,
+            LocalDateTime postTime,
+            String description,
+            List<String> skillsRequired,
+            JobStatus jobStatus
+    ) {
+        this.id = id;
+        this.jobTitle = jobTitle;
+        this.company = company;
+        this.applicants = applicants;
+        this.about = about;
+        this.experience = experience;
+        this.location = location;
+        this.jobtype = jobtype;
+        this.packageOffered = packageOffered;
+        this.postTime = postTime;
+        this.description = description;
+        this.skillsRequired = skillsRequired;
+        this.jobStatus = jobStatus;
+    }
+
+    // getters & setters omitted for brevity
+
+    // ✅ DTO → Entity (mapping happens here)
+    public Job toEntity() {
+        return new Job(
+                null, // new job, ID should be null
+                this.jobTitle,
+                this.company,
+                null, // applicants handled separately
+                this.about,
+                this.experience,
+                this.location,
+                this.jobtype,
+                this.packageOffered,
+                this.postTime != null ? this.postTime : LocalDateTime.now(),
+                this.description,
+                this.skillsRequired,
+                this.jobStatus
+        );
+    }
+
+}
