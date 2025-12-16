@@ -1,25 +1,24 @@
+import { Select } from '@mantine/core';
 
-import { useEffect, useState } from 'react';
-import { MultiSelect,  } from '@mantine/core';
+type SelectInputProps = {
+  form: any;
+  name: string;
+  label: string;
+  placeholder?: string;
+  options: string[];
+};
 
-const SelectInput=(props:any)=> {
-     useEffect(()=>{
-        setdata(props.options)
-    }, [])
-  const [data, setdata] = useState<string[]>([]);
-  
-    
-  
-
+const SelectInput = ({ form, name, label, placeholder, options }: SelectInputProps) => {
   return (
-   <MultiSelect withAsterisk
-  className="text-gray-100 [&_input]:font-medium"
-  label={props.label}
-  placeholder={props.placeholder}
-  data={props.options}
-  maxValues={3}
-  searchable
-/>
+    <Select
+      withAsterisk
+      label={label}
+      placeholder={placeholder}
+      data={options}
+      searchable
+      {...form.getInputProps(name)}
+    />
   );
-}
+};
+
 export default SelectInput;

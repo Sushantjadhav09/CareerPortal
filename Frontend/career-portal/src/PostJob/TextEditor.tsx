@@ -1,17 +1,19 @@
 import { RichTextEditor, Link } from '@mantine/tiptap';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { content } from '../Data/PostJob';
 
 
-const TextEditor=()=>{
+const TextEditor=(props:any)=>{
   const editor = useEditor({
     shouldRerenderOnTransaction: true,
     extensions: [
       StarterKit.configure({ link: false }),
       Link,
     ],
-    content,
+    content:props.form.getValues().description,
+    onUpdate({editor}){
+      props.form.setFieldValue('description', editor.getHTML);
+    },
   });
 
   return (

@@ -32,7 +32,7 @@ function App() {
         <Route path='/find-jobs' element={<FindJobs/>}/>
         <Route path='/find-talents' element={<FindTalentPage/>}/>
         <Route path='/talent-profile' element={<TalentProfilePage/>}/>
-        <Route path='/jobs' element={<JobDescPage/>}/>
+        <Route path='/jobs/:id' element={<JobDescPage/>}/>
         <Route path='/apply-job' element={<ApplyJobPage/>}/>
         <Route path='/post-job' element={<PostJobPage/>}/>
         <Route path='/signup' element={<SignUpPage/>}/>
