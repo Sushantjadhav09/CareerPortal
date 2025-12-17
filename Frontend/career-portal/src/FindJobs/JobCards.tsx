@@ -8,6 +8,9 @@ type Applicant = {
   applicationStatus: string;
 };
 const JobCards = (props:any) => {
+   const applicants: Applicant[] = Array.isArray(props.applicants)
+    ? props.applicants
+    : [];
   return <Link to={`/jobs/${props.id}`} className='bg-gray-700 p-4 w-72 flex flex-col gap-3 rounded-xl hover:shadow-[0_0_5px_1px_yellow] !shadow-amber-400'> 
         <div className='flex justify-between '>
             <div className='flex gap-2 items-center '>
@@ -16,16 +19,9 @@ const JobCards = (props:any) => {
                 </div>
                 <div>
                     <div className='font-semibold'>{props.jobTitle}</div>
-<div>
-        {props.company} • {props.applicants?props.applicants.length:0} Applicants
-        <ul>
-          {props.applicants?.map((applicant: Applicant) => (
-            <li key={applicant.applicantId}>
-              {applicant.applicationStatus} at {new Date(applicant.timestamp).toLocaleDateString()}
-            </li>
-          ))}
-        </ul>
-      </div>
+              <div>
+                {props.company} • {applicants.length} Applicants
+              </div>
                 </div>
             </div>
             <IconBookmark className='text-gray-300 hover:cursor-pointer'/>
