@@ -2,18 +2,21 @@ import { RichTextEditor, Link } from '@mantine/tiptap';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 
-
-const TextEditor=(props:any)=>{
+const TextEditor = (props: any) => {
   const editor = useEditor({
     shouldRerenderOnTransaction: true,
     extensions: [
       StarterKit.configure({ link: false }),
       Link,
     ],
-    content:props.form.getValues().description,
-    onUpdate({editor}){
-      props.form.setFieldValue('description', editor.getHTML);
-    },
+    content: props.form.values.description, // ✅ safer
+    onUpdate({ editor }) {
+  props.form.setFieldValue(
+    'description',
+    editor.getText()
+  );
+}
+,
   });
 
   return (
@@ -66,6 +69,6 @@ const TextEditor=(props:any)=>{
       <RichTextEditor.Content />
     </RichTextEditor>
   );
-}
+};
 
-export default TextEditor
+export default TextEditor;

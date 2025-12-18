@@ -33,7 +33,7 @@ function App() {
         <Route path='/find-talents' element={<FindTalentPage/>}/>
         <Route path='/talent-profile' element={<TalentProfilePage/>}/>
         <Route path='/jobs/:id' element={<JobDescPage/>}/>
-        <Route path='/apply-job' element={<ApplyJobPage/>}/>
+        <Route path='/apply-job/:id' element={<ApplyJobPage/>}/>
         <Route path='/post-job' element={<PostJobPage/>}/>
         <Route path='/signup' element={<SignUpPage/>}/>
         <Route path='/login' element={<SignUpPage/>}/>

@@ -4,22 +4,22 @@ import { Link } from "react-router-dom"
 import { card, desc, skills } from "../Data/JobDescData"
 import DOMPurify from 'dompurify'
 
-const JobDesc = () => {
+const JobDesc = (props:any) => {
     const data =DOMPurify.sanitize(desc) ;
     return (
     <div className="w-2/3">
         <div className='flex justify-between '>
             <div className='flex gap-2 items-center '>
                 <div className='p-3 bg-gray-600 rounded-xl '>
-                    <img className='h-14' src={`/Icons/Google.png`} alt="" />
+                    <img className='h-14' src={`/Icons/${props.company}.png`} alt="" />
                 </div>
                 <div>
-                    <div className='font-semibold text-2xl'>Software Enginner III</div>
-                    <div className='text-lg text-gray-300' > Google &#x2022; 3 days ago &#x2022; 48 Applicants </div>
+                    <div className='font-semibold text-2xl'>{props.jobTitle}</div>
+                    <div className='text-lg text-gray-300' > {props.company} &#x2022; 3 days ago &#x2022; 48 Applicants </div>
                 </div>
             </div>
             <div className="flex flex-col gap-2 items-center">
-                <Link to="/apply-job">
+                <Link to={`/apply-job/${props.id}`}>
             <Button color='yellow' variant='light' size="sm" fullWidth>Apply</Button>
                 </Link>
             <IconBookmark className='text-amber-400 hover:cursor-pointer'/>    
@@ -58,14 +58,14 @@ const JobDesc = () => {
              <div className='flex justify-between mt-8 mb-3'>
             <div className='flex gap-2 items-center '>
                 <div className='p-3 bg-gray-600 rounded-xl '>
-                    <img className='h-8' src={`/Icons/Google.png`} alt="" />
+                    <img className='h-8' src={`/Icons/${props.company}.png`} alt="" />
                 </div>
                 <div className="flex flex-col">
-                    <div className='font-medium text-lg'>Google</div>
+                    <div className='font-medium text-lg'>{props.company}</div>
                     <div className='text-lg text-gray-300' >10K+ Employees </div>
                 </div>
             </div>
-            <div className="flex flex-col gap-2 items-center">
+            <div className="flex flex-col gap-2 items-center"> 
                 <Link to="/apply-job">
             <Button color='yellow' variant='light' size="sm" fullWidth>Company Page</Button>
                 </Link>

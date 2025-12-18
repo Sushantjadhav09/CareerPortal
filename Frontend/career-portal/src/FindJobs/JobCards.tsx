@@ -1,6 +1,7 @@
 import { IconBookmark, IconClockHour3 } from '@tabler/icons-react'
 import { Divider, Text } from '@mantine/core';
 import { Link } from 'react-router-dom';
+import PostJob from '../PostJob/PostJob';
 
 type Applicant = {
   applicantId: number;
@@ -19,7 +20,7 @@ const JobCards = (props:any) => {
                 </div>
                 <div>
                     <div className='font-semibold'>{props.jobTitle}</div>
-              <div>
+              <div className='text-xs'>
                 {props.company} • {applicants.length} Applicants
               </div>
                 </div>
@@ -31,13 +32,13 @@ const JobCards = (props:any) => {
             <div>{props.jobtype}</div>
             <div>{props.location}</div>
         </div>
-         <Text className='text-xs! text-justify text-gray-300!' lineClamp={3}>{props.about}
+         <Text className='text-xs! text-justify text-gray-300!' lineClamp={3}>{props.description}
          </Text>
         <Divider size="xs" color='white'/>
          
         <div className='flex justify-between'>
             <div className='font-semibold text-gray-200'>
-                &#8377; {props.packageOffered}
+                &#8377; {props.packageOffered} LPA
             </div>
             <div className='flex gap-1 text-gray-400 text-xs items-center'>
               <IconClockHour3 stroke={1.5} className='h-5 w-5' />  {props.postedDaysAgo} days ago

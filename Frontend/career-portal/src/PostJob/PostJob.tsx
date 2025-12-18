@@ -20,7 +20,7 @@ const PostJob = () => {
             packageOffered:null, 
             skillsRequired: [],
             about:'',
-            description:content,
+            description:"",
 
         },
         validate:{
@@ -34,30 +34,32 @@ const PostJob = () => {
             value.length === 0 ? 'Skills are required' : null,            
             about: isNotEmpty('about  is required'),
             description: isNotEmpty('description  is required'),
+            
 
         }
     })
-    const handlePost = ()=>{
-        form.validate();
-        if(!form.isValid())return;  
-        postJob(form.getValues()).then((res)=>{
-        notifications.show({
+   const handlePost = (values: typeof form.values) => {
+  postJob(values)
+    .then(() => {
+      notifications.show({
         title: 'Job Posted',
         message: 'Your job has been posted successfully 🎉',
         color: 'green',
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+      notifications.show({
+        title: 'Error',
+        message: 'Failed to post job. Please try again.',
+        color: 'red',
+      });
     });
+};
 
-        }).catch((err)=>{
-            console.log(err)
-            notifications.show({
-            title: 'Error',
-            message: 'Failed to post job. Please try again.',
-            color: 'red',
-    });
-        })
-    }
   return (<div className="w-4/5 mx-auto">
     <div className="text-2xl font-semibold">Post a Job</div>
+    <form onSubmit={form.onSubmit(handlePost)}>
     <div className="flex flex-col gap-5">   
         <div className="flex gap-10 [&>*]:w-1/2">
             <SelectInput form={form} name="jobTitle" {...select[0]}/>
@@ -78,11 +80,15 @@ const PostJob = () => {
         <TextEditor form={form}/>
         </div>
         <div className="flex gap-4 w-100">
-            <Button color='yellow' variant='light' onClick={handlePost } fullWidth>Publish Job</Button>
+            
+            <Button type="submit" color="yellow" variant="light" fullWidth>
+            Publish Job 
+            </Button>
             <Button color='yellow' variant='outline' fullWidth>Save as a draft</Button>
             
         </div>
     </div>
+    </form>
   </div>
   )
 }
