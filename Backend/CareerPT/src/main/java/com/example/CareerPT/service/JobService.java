@@ -2,7 +2,9 @@ package com.example.CareerPT.service;
 
 import java.util.List;
 
+import com.example.CareerPT.dto.ApplicantDTO;
 import com.example.CareerPT.dto.JobDTO;
+import com.example.CareerPT.entity.Job;
 import com.example.CareerPT.exception.JobPortalException;
 
 
@@ -13,6 +15,9 @@ public interface JobService {
 	public List<JobDTO> getALLJobs();
 
 	public JobDTO getJobById(Long id) throws JobPortalException;
+
+	public Job applyJob(Long id, ApplicantDTO applicantDTO) throws JobPortalException;
+
 	
 
 }

@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.CareerPT.dto.ApplicantDTO;
 import com.example.CareerPT.dto.JobDTO;
+import com.example.CareerPT.entity.Job;
 import com.example.CareerPT.exception.JobPortalException;
 import com.example.CareerPT.service.JobService;
 
@@ -47,5 +49,14 @@ public class JobAPI {
 	@GetMapping("getJobById/{id}")
 	public ResponseEntity<JobDTO>getJobById(@PathVariable Long id)throws JobPortalException{
 		return  new ResponseEntity<JobDTO>(jobService.getJobById(id),HttpStatus.OK);
+	}
+	
+	@PostMapping(
+		    value = "/apply/{id}",
+		    consumes = MediaType.APPLICATION_JSON_VALUE,
+		    produces = MediaType.APPLICATION_JSON_VALUE
+		)
+	public ResponseEntity<Job>applyJOb( @PathVariable Long id, @RequestBody ApplicantDTO applicantDTO) throws JobPortalException{
+		return new ResponseEntity<Job>(jobService.applyJob(id,applicantDTO),HttpStatus.OK);
 	}
 }

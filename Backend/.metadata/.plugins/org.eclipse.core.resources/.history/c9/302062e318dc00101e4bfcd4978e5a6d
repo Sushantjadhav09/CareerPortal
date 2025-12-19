@@ -1,0 +1,22 @@
+package com.example.CareerPT.dto;
+
+import java.time.LocalDateTime;
+import com.example.CareerPT.enums.ApplicationStatus;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ApplicantDTO {
+
+    private Long applicantId;
+    private String name;
+    private String email;
+    private Long phone;
+    private String website;
+    private String resume;
+    private String coverLetter;
+    private LocalDateTime timestamp;
+    private ApplicationStatus applicationStatus;
+
+    
+    
+}

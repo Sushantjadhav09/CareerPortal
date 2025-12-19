@@ -3,7 +3,6 @@ package com.example.CareerPT.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.example.CareerPT.entity.ApplicantEntity;
 import com.example.CareerPT.entity.Job;
 import com.example.CareerPT.enums.JobStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -14,7 +13,7 @@ public class JobDTO {
     private Long id;
     private String jobTitle;
     private String company;
-    private List<Applicant> applicants; // ✅ DTO, not Entity
+    private List<ApplicantDTO> applicants; // ✅ DTO, not Entity
     private String about;
     private String experience;
     private String location;
@@ -31,7 +30,7 @@ public class JobDTO {
             Long id,
             String jobTitle,
             String company,
-            List<Applicant> applicants,
+            List<ApplicantDTO> applicants,
             String about,
             String experience,
             String location,
@@ -84,11 +83,11 @@ public class JobDTO {
 		this.company = company;
 	}
 
-	public List<Applicant> getApplicants() {
+	public List<ApplicantDTO> getApplicants() {
 		return applicants;
 	}
 
-	public void setApplicants(List<Applicant> applicants) {
+	public void setApplicants(List<ApplicantDTO> applicants) {
 		this.applicants = applicants;
 	}
 
@@ -167,11 +166,11 @@ public class JobDTO {
 
 	    // ✅ Replace this existing method
 	    public Job toEntity() {
-	        Job job = new Job(
+	    	return new Job(
 	            this.id,
 	            this.jobTitle,
 	            this.company,
-	            null, // will set later
+	            this.applicants!=null?this.applicants.stream().map((x)->x.toEntity()).toList():null,
 	            this.about,
 	            this.experience,
 	            this.location,
@@ -183,23 +182,6 @@ public class JobDTO {
 	            this.jobStatus
 	        );
 
-	        if (this.applicants != null) {
-	            List<ApplicantEntity> applicantEntities = this.applicants.stream()
-	                .map(a -> {
-	                    ApplicantEntity entity = new ApplicantEntity();
-	                    // Do NOT set entity.setApplicantId(a.getApplicantId()); ← remove this line
-	                    entity.setTimestamp(a.getTimestamp());
-	                    entity.setApplicationStatus(a.getApplicationStatus());
-	                    entity.setJob(job); // link to parent
-	                    return entity;
-	                })
-	                .toList();
-
-	            job.setApplicants(applicantEntities);
-	        }
-
-
-	        return job;
 	    }
 	
 

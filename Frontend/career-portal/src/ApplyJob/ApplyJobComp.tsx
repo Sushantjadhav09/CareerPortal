@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ApplicationForm from './ApplicationForm'
 
-const ApplyJobComp = () => {
+const ApplyJobComp = (props:any) => {
     const navigate = useNavigate();
   return (
     <div className='w-2/3 mx-auto '> 
@@ -12,11 +12,11 @@ const ApplyJobComp = () => {
          <div className='flex justify-between mb-10 '>
             <div className='flex gap-2 items-center '>
                 <div className='p-3 bg-gray-600 rounded-xl '>
-                    <img className='h-14' src={`/Icons/Google.png`} alt="" />
+                    <img className='h-14' src={`/Icons/${props.company}.png`} alt="" />
                 </div>
                 <div>
-                    <div className='font-semibold text-2xl'>Software Enginner III</div>
-                    <div className='text-lg text-gray-300' > Google &#x2022; 3 days ago &#x2022; 48 Applicants </div>
+                    <div className='font-semibold text-2xl'>{props.jobTitle}</div>
+                    <div className='text-lg text-gray-300' > {props.company} &#x2022; 3 days ago &#x2022; {props.applicant?props.applicant.length:0} Applicants </div>
                 </div>
             </div>
         </div>

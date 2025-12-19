@@ -3,7 +3,7 @@ package com.example.CareerPT.entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.example.CareerPT.dto.Applicant;
+import com.example.CareerPT.dto.ApplicantDTO;
 import com.example.CareerPT.dto.JobDTO;
 import com.example.CareerPT.enums.JobStatus;
 
@@ -26,7 +26,7 @@ public class Job {
 	private String jobTitle;
 	private String company;
 	@OneToMany(mappedBy = "job", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<ApplicantEntity> applicants;
+	private List<Applicant> applicants;
 	private String about;
 	private String experience;
 	private String location;
@@ -40,7 +40,7 @@ public class Job {
 	
 	public Job(){};
 
-	public Job(Long id, String jobTitle, String company, List<ApplicantEntity> applicants, String about, String experience,
+	public Job(Long id, String jobTitle, String company, List<Applicant> applicants, String about, String experience,
 			String location, String jobtype, Long packageOffered, LocalDateTime postTime, String description,
 			List<String> skillsRequired, JobStatus jobStatus) {
 		super();
@@ -83,11 +83,11 @@ public class Job {
 		this.company = company;
 	}
 
-	public List<ApplicantEntity> getApplicants() {
+	public List<Applicant> getApplicants() {
 		return applicants;
 	}
 
-	public void setApplicants(List<ApplicantEntity> applicants) {
+	public void setApplicants(List<Applicant> applicants) {
 		this.applicants = applicants;
 	}
 
@@ -165,22 +165,11 @@ public class Job {
 	
 	public JobDTO toDTO() {
 
-	    List<Applicant> applicantDTOs =
-	            applicants == null
-	                    ? List.of()
-	                    : applicants.stream()
-	                        .map(a -> new Applicant(
-	                                a.getApplicantId(),
-	                                a.getTimestamp(),
-	                                a.getApplicationStatus()
-	                        ))
-	                        .toList();
-
-	    return new JobDTO(
+	   return new JobDTO(
 	            id,
 	            jobTitle,
 	            company,
-	            applicantDTOs,
+	            this.applicants!=null?this.applicants.stream().map((x)->x.toDTO()).toList():null,
 	            about,
 	            experience,
 	            location,

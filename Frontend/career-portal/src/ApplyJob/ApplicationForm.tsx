@@ -2,17 +2,39 @@ import { Button, FileInput, LoadingOverlay, NumberInput, Textarea, TextInput } f
 import { isNotEmpty, useForm } from "@mantine/form";
 import { IconPaperclip } from "@tabler/icons-react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { getBase64 } from "../Services/Utilities";
+import { applyJob } from "../Services/JobService";
+import { notifications } from "@mantine/notifications";
 
 const ApplicationForm = () => {
+    const {id}= useParams();
      const [preview, setPreview]=useState(false)
     const [submit, setSubmit] = useState(false)    
     const handlePreveiw = ()=>{
+        form.validate();
+        window.scrollTo({top:0, behavior:'smooth'})
+        if(!form.isValid())return;
         setPreview(!preview);
-        console.log(form.getValues);
     }
-    const handleSubmit =()=>{
-       
+    const handleSubmit = async()=>{
+       setSubmit(true);
+       let resume:any = await getBase64(form.getValues().resume);
+       let applicant = {...form.getValues(), resume:resume.split(',')[1]};
+       applyJob(id,applicant).then((res)=>{
+        setSubmit(false);
+        notifications.show({
+                title: 'Application Submitted',
+                message: 'Your application has been applied successfully 🎉',
+                color: 'green',
+              });
+       }).catch((err)=>{
+        setSubmit(false);
+        notifications.show({
+        title: 'Error',
+        message: 'Failed to apply job. Please try again.',
+        color: 'red',
+      });       })
     }
     const form = useForm({   
             mode:'controlled',
