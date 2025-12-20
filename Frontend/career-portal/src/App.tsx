@@ -18,6 +18,7 @@ import TalentProfilePage from './Pages/TalentProfilePage';
 import PostJobPage from './Pages/PostJobPage';
 import JobDescPage from './Pages/JobDescPage';
 import ApplyJobPage from './Pages/ApplyJobPage';
+import PostedJobPage from './Pages/PostedJobPage';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -35,6 +36,7 @@ function App() {
         <Route path='/jobs/:id' element={<JobDescPage/>}/>
         <Route path='/apply-job/:id' element={<ApplyJobPage/>}/>
         <Route path='/post-job' element={<PostJobPage/>}/>
+        <Route path='/posted-jobs' element={<PostedJobPage/>}/>
         <Route path='/signup' element={<SignUpPage/>}/>
         <Route path='/login' element={<SignUpPage/>}/>
 

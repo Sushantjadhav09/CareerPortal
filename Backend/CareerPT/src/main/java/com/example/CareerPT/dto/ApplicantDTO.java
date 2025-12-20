@@ -7,6 +7,9 @@ import com.example.CareerPT.entity.Applicant;
 import com.example.CareerPT.enums.ApplicationStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -9,7 +9,7 @@ import { notifications } from "@mantine/notifications";
 
 const ApplicationForm = () => {
     const {id}= useParams();
-     const [preview, setPreview]=useState(false)
+    const [preview, setPreview]=useState(false)
     const [submit, setSubmit] = useState(false)    
     const handlePreveiw = ()=>{
         form.validate();
@@ -25,7 +25,7 @@ const ApplicationForm = () => {
         setSubmit(false);
         notifications.show({
                 title: 'Application Submitted',
-                message: 'Your application has been applied successfully 🎉',
+                message: 'Your application has been sent successfully 🎉',
                 color: 'green',
               });
        }).catch((err)=>{

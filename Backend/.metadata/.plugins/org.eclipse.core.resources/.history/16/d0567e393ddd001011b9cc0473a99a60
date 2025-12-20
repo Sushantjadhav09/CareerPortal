@@ -1,59 +1,35 @@
-package com.example.CareerPT.entity;
+package com.example.CareerPT.dto;
 
 import java.time.LocalDateTime;
 import java.util.Base64;
 
-import com.example.CareerPT.dto.ApplicantDTO;
+import com.example.CareerPT.entity.Applicant;
 import com.example.CareerPT.enums.ApplicationStatus;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Applicant {
-	
+public class ApplicantDTO {
 
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long applicantId;
     private String name;
     private String email;
     private Long phone;
     private String website;
-    @Lob
-    @Column(columnDefinition = "LONGBLOB")
-    private byte[] resume;
+    private String resume;
     private String coverLetter;
     private LocalDateTime timestamp;
-    @Enumerated(EnumType.STRING)   // 🔥 THIS MUST EXIST
-    @Column(name = "application_status", nullable = false)
     private ApplicationStatus applicationStatus;
-    @ManyToOne
-    @JoinColumn(name = "job_id") // FK column in applicants table
-    @JsonIgnore // prevents infinite recursion in JSON
-    private Job job;
-
     
-    public Applicant() {};
+    public ApplicantDTO() {};
 
-   public Applicant(Long applicantId, String name, String email, Long phone, String website, byte[] resume,
+   public ApplicantDTO(Long applicantId, String name, String email, Long phone, String website, String resume,
 			String coverLetter, LocalDateTime timestamp, ApplicationStatus applicationStatus) {
 		super();
 		this.applicantId = applicantId;
@@ -68,11 +44,9 @@ public class Applicant {
 	}
 
 
-
 public Long getApplicantId() {
 		return applicantId;
 	}
-
 
 
 	public void setApplicantId(Long applicantId) {
@@ -80,11 +54,9 @@ public Long getApplicantId() {
 	}
 
 
-
 	public String getName() {
 		return name;
 	}
-
 
 
 	public void setName(String name) {
@@ -92,11 +64,9 @@ public Long getApplicantId() {
 	}
 
 
-
 	public String getEmail() {
 		return email;
 	}
-
 
 
 	public void setEmail(String email) {
@@ -104,11 +74,9 @@ public Long getApplicantId() {
 	}
 
 
-
 	public Long getPhone() {
 		return phone;
 	}
-
 
 
 	public void setPhone(Long phone) {
@@ -116,11 +84,9 @@ public Long getApplicantId() {
 	}
 
 
-
 	public String getWebsite() {
 		return website;
 	}
-
 
 
 	public void setWebsite(String website) {
@@ -128,17 +94,14 @@ public Long getApplicantId() {
 	}
 
 
-
-	public byte[] getResume() {
+	public String getResume() {
 		return resume;
 	}
 
 
-
-	public void setResume(byte[] resume) {
+	public void setResume(String resume) {
 		this.resume = resume;
 	}
-
 
 
 	public String getCoverLetter() {
@@ -146,11 +109,9 @@ public Long getApplicantId() {
 	}
 
 
-
 	public void setCoverLetter(String coverLetter) {
 		this.coverLetter = coverLetter;
 	}
-
 
 
 	public LocalDateTime getTimestamp() {
@@ -158,11 +119,9 @@ public Long getApplicantId() {
 	}
 
 
-
 	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
-
 
 
 	public ApplicationStatus getApplicationStatus() {
@@ -170,16 +129,15 @@ public Long getApplicantId() {
 	}
 
 
-
 	public void setApplicationStatus(ApplicationStatus applicationStatus) {
 		this.applicationStatus = applicationStatus;
 	}
 
 
-
-public ApplicantDTO toDTO() {
-	    return new ApplicantDTO(this.applicantId,this.name,this.email,this.phone,this.website
-	    		,this.resume!=null?Base64.getEncoder().encodeToString(this.resume):null,this.coverLetter,this.timestamp,this.applicationStatus);
+public Applicant toEntity() {
+	return new Applicant(this.applicantId,this.name,this.email,this.phone,this.website
+    		,this.resume!=null?Base64.getDecoder().decode(this.resume):null,this.coverLetter,
+    				this.timestamp,this.applicationStatus);
    }
     
 }
