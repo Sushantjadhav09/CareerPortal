@@ -13,12 +13,13 @@ public interface JobService {
 
 	public JobDTO postJob( JobDTO jobDTO) throws JobPortalException;
 
-	public List<JobDTO> getALLJobs();
+
 
 	public JobDTO getJobById(Long id) throws JobPortalException;
 
 	public Job applyJob(Long id, ApplicantDTO applicantDTO) throws JobPortalException;
 
+	public List<Applicant> getAllapplicant();
 
 	
 

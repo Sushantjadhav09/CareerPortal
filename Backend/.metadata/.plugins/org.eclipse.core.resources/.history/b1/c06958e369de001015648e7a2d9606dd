@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -59,7 +58,5 @@ public class JobAPI {
 		)
 	public ResponseEntity<Job>applyJOb( @PathVariable Long id, @RequestBody ApplicantDTO applicantDTO) throws JobPortalException{
 		return new ResponseEntity<Job>(jobService.applyJob(id,applicantDTO),HttpStatus.OK);
-		
-		}
-	
+	}
 }
