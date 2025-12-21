@@ -1,4 +1,4 @@
-import { IconHeart, IconMapPin } from '@tabler/icons-react'
+import { IconHeart, IconMapPin,IconCalendarMonth } from '@tabler/icons-react'
 import { Avatar, Button, Divider, Text } from '@mantine/core';
 import { Link } from 'react-router-dom';
 
@@ -43,7 +43,8 @@ const TalentCard = (props:any) => {
             <Button color='yellow' variant='outline' fullWidth>Profile</Button>
             </Link>
             <div>
-            <Button color='yellow' variant='light' fullWidth>Message</Button>
+           {props.posted?<Button rightSection={<IconCalendarMonth className='w-5 h-5' />} color='yellow' variant='light' fullWidth>Schedule
+           </Button>:<Button color='yellow' variant='light' fullWidth>Message</Button>}
             </div>
         </div>
 

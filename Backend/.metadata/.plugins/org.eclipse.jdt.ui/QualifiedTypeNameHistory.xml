@@ -49,4 +49,5 @@
     <fullyQualifiedTypeName name="com.example.CareerPT.exception.JobPortalException"/>
     <fullyQualifiedTypeName name="com.example.CareerPT.enums.ApplicationStatus"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
+    <fullyQualifiedTypeName name="com.example.CareerPT.enums.JobStatus"/>
 </qualifiedTypeNameHistroy>

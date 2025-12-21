@@ -16,7 +16,6 @@ import com.example.CareerPT.dto.JobDTO;
 import com.example.CareerPT.entity.Applicant;
 import com.example.CareerPT.entity.Job;
 import com.example.CareerPT.enums.ApplicationStatus;
-import com.example.CareerPT.enums.JobStatus;
 import com.example.CareerPT.exception.JobPortalException;
 import com.example.CareerPT.repository.JobRepository;
 
@@ -29,7 +28,7 @@ public class JobServiceImpl implements JobService{
 	public JobDTO postJob(JobDTO jobDTO) throws JobPortalException {
 	    // Convert DTO to Entity
 	    Job job = jobDTO.toEntity();
-	    job.setJobStatus(JobStatus.POSTED);
+
 	    // Save entity
 	    Job savedJob = jobRepository.save(job);
 
