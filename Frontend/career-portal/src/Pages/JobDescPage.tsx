@@ -6,7 +6,7 @@ import RecommendedJobs from "../JobDescription/RecommendedJobs"
 import { useEffect, useState } from "react"
 import { getJobById } from "../Services/JobService"
 
-const JobDescPage = () => {
+const  JobDescPage = () => {
   const {id}=useParams();
   const[job,setJob] = useState<any>(null);
   useEffect(()=>{

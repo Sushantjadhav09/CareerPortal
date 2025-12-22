@@ -27,4 +27,10 @@ const applyJob =async (id:any, applicant:any )=>{
     .catch(error => {throw error;});
 }
 
-export{postJob, getAllJobs, getJobById, applyJob}
+const getAllApplicants = async()=>{
+    return axios.get(`${base_url}getAllapplicants`)
+    .then(result => result.data)
+    .catch(error => {throw error})
+}
+
+export{postJob, getAllJobs, getJobById, applyJob,getAllApplicants}
