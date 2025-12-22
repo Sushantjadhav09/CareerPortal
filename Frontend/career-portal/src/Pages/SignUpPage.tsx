@@ -2,19 +2,24 @@
 import { Anchor } from 'tabler-icons-react'
 import SignUp from '../SignUpLogin/SignUp'
 import Login from '../SignUpLogin/Login'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { Button } from '@mantine/core'
+import { IconArrowLeft } from '@tabler/icons-react'
 
 const SignUpPage = () => {
   const location = useLocation()
   const [animate, setAnimate] = useState(false);
+  const navigate = useNavigate();
 
 useEffect(() => {
   setTimeout(() => setAnimate(true), 10);
 }, []);
 
   return (
-    <div className="min-h-[90vh] bg-gray-800 font-['poppins'] overflow-hidden">
+    <div className="min-h-[90vh] bg-gray-800 font-['poppins'] overflow-hidden relative">
+      <Button className='absolute! left-5 top-5 z-10' color="yellow" onClick={()=>navigate("/")} leftSection={<IconArrowLeft size={20}/>} variant="light">Home</Button>
+
 <div
   className={`
     w-[100vw] h-[100vh] flex [&>*]:flex-shrink-0 

@@ -38,27 +38,27 @@ const ApplicantCard = ({ applicant }: { applicant: Applicant }) => {
           </div>
 
           <div>
-            <div className="font-semibold text-lg capitalize">
+            <div className="font-semibold text-2xl capitalize">
               {applicant.name}
             </div>
-            <div className="text-xs text-gray-300">
+            <div className="text-sm text-gray-300">
               Applied on {new Date(applicant.timestamp).toLocaleDateString()}
             </div>
           </div>
         </div>
 
-        <IconHeart className="text-gray-300 hover:text-red-400 cursor-pointer" />
+        <IconHeart className="text-gray-300 hover:text-red-400 cursor-pointer size-9" />
       </div>
 
       {/* Status */}
       <div>
-        <Badge color="yellow" variant="light">
+        <Badge size='lg' color="yellow" variant="light">
           {applicant.applicationStatus}
         </Badge>
       </div>
 
       {/* Contact */}
-      <div className="flex flex-col gap-2 text-sm text-gray-300">
+      <div className="flex flex-col gap-2 text-lg text-gray-300">
         <div className="flex items-center gap-2">
           <IconMail size={16} /> {applicant.email}
         </div>
@@ -82,7 +82,7 @@ const ApplicantCard = ({ applicant }: { applicant: Applicant }) => {
       <Divider size="xs" color="gray" />
 
       {/* Cover Letter */}
-      <p className="text-xs text-gray-300 line-clamp-3">
+      <p className="text-sm text-gray-300 line-clamp-3">
         {applicant.coverLetter}
       </p>
 
