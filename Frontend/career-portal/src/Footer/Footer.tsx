@@ -6,6 +6,7 @@ import { Divider } from "@mantine/core";
 const Footer = () => {
     const location = useLocation();
   return ( location.pathname!="/signup"&& location.pathname!="/login"? 
+    <div className=" flex flex-col bg-gray-800">
     <div className="p-20 pb-5 flex gap-5 justify-around bg-gray-800 font-['poppins']"> 
         <div className="w-1/4 flex flex-col gap-4">
               <div className='flex gap-1  text-amber-400'>
@@ -34,6 +35,13 @@ const Footer = () => {
             </div>)
         }  
         
+    </div>
+    <div>
+      <Divider size="xs" mx="md" color="white"/>
+    </div>
+    <div className="bg-gray-800 text-stone-300 font-semibold text-xl mt-6 mb-6 text-center">
+        Designed & Developed By <a className="text-amber-400 hover:underline" href="https://github.com/Sushantjadhav09" target="_blank">Sushant Jadhav</a>
+    </div>
     </div>
     :<></>
     
