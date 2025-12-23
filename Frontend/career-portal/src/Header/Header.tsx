@@ -1,10 +1,12 @@
-import { Avatar,Indicator } from '@mantine/core'
+import { Avatar,Button,Indicator } from '@mantine/core'
 import {  Bell, Settings, Anchor } from 'tabler-icons-react'
 import NavLinks from './NavLinks'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { IconArrowLeft } from '@tabler/icons-react'
 
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   return ( location.pathname!="/signup"&& location.pathname!="/login"?
     <div className="w-full bg-gray-800 text-white flex justify-between px-6 items-center h-20 font-['poppins']">
         <div className='flex gap-1  text-amber-400'>
@@ -14,6 +16,7 @@ const Header = () => {
         {NavLinks()}
         <div className='flex gap-3 items-center'>
             <div className='flex gap-3 items-center' >
+            <Button className='absolute!  top-5 right-70' color="yellow" onClick={()=>navigate("/signup")}  variant="outline">Login</Button>
               <div>
                 Sushant</div>
                 <Avatar src="/avatar.png" alt="it's me" />

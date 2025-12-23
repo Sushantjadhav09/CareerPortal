@@ -1,6 +1,7 @@
 import { Anchor, BrandFacebook,BrandLinkedin, BrandInstagram } from "tabler-icons-react"
 import { footerLinks } from "../Data/Data"
 import { useLocation } from "react-router-dom"
+import { Divider } from "@mantine/core";
 
 const Footer = () => {
     const location = useLocation();
@@ -19,7 +20,9 @@ const Footer = () => {
                     <div><BrandInstagram/></div>
                     <div><BrandLinkedin/></div>
                </div>
+               
         </div>
+       
         {
             footerLinks.map((item,index) =><div key={index}>
                 <div className="text-lg font-semibold mb-4 text-amber-400">{item.title}</div>
@@ -29,8 +32,11 @@ const Footer = () => {
 
 
             </div>)
-        }
-    </div>:<></>
+        }  
+        
+    </div>
+    :<></>
+    
   )
 }
 

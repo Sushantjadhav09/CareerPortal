@@ -48,7 +48,18 @@ const PostedJobDesc = () => {
 }
         </div>
       </Tabs.Panel>
-      <Tabs.Panel value="Interviewing">s</Tabs.Panel>
+      <Tabs.Panel value="Interviewing">
+        <div className='flex flex-wrap gap-20 mt-10'>
+        {
+  applicant.map((applicant, index) => (
+    <ApplicantCard
+      key={applicant.applicantId ?? index}
+      applicant={applicant}
+    />
+  ))
+}
+</div>
+      </Tabs.Panel>
     </Tabs>
     </div>
     </div>
