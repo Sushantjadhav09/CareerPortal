@@ -33,7 +33,7 @@ const Login = () => {
         console.log(res);
         notifications.show({
                title: 'Login Successful',
-               message: "Redirectiong to homepage",
+               message: "Welcome to the Jobhook",
                color:"red",
                withBorder:true,
                className:"!border-red-500"
