@@ -18,5 +18,7 @@ public interface UserService {
 	public List<User> getAllusers();
 
 	public UserDTO loginUser(LoginDTO loginDTO) throws JobPortalException;
+	
+	public UserDTO getUserByEmail(String email)throws JobPortalException;
 
 }

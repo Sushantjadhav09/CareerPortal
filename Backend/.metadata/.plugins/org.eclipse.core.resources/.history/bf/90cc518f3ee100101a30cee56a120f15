@@ -23,7 +23,6 @@ public class CustomUserDetails implements UserDetails {
 	private AccountType accountType;
 	private Collection<?extends GrantedAuthority>authorirties;
 	
-	public CustomUserDetails() {};
 	
 	public CustomUserDetails(Long id, String username, String password, AccountType accountType,
 			Collection<? extends GrantedAuthority> authorirties) {
@@ -34,53 +33,20 @@ public class CustomUserDetails implements UserDetails {
 		this.accountType = accountType;
 		this.authorirties = authorirties;
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public AccountType getAccountType() {
-		return accountType;
-	}
-
-	public void setAccountType(AccountType accountType) {
-		this.accountType = accountType;
-	}
-
-	public Collection<? extends GrantedAuthority> getAuthorirties() {
-		return authorirties;
-	}
-
-	public void setAuthorirties(Collection<? extends GrantedAuthority> authorirties) {
-		this.authorirties = authorirties;
-	}
-	
-	
-	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
