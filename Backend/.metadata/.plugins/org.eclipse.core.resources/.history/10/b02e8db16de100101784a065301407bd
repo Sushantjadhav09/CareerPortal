@@ -1,0 +1,5 @@
+package com.example.CareerPT.JWT;
+
+public class JwtAuthenticationEntryPoint {
+
+}

@@ -7,6 +7,7 @@ import java.util.function.Function;
 
 import javax.crypto.SecretKey;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -43,9 +44,9 @@ public class JwtHelper {
         return expiration.before(new Date());
     }
     
-    public String generateToken(String username) {
+    public String generateToken(UserDetails userDetails) {
     	Map<String, Object>claims = new HashMap<>();
-    	return doGenerateToken(claims,username);
+    	return doGenerateToken(claims,userDetails.getUsername());
     }
     
     private String doGenerateToken(Map<String,Object> claims, String subject) {

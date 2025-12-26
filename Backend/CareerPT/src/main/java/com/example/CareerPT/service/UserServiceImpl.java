@@ -32,7 +32,9 @@ public class UserServiceImpl implements UserService{
 	    User user = userDTO.toEntity();
 
 	    // ENCODE HERE → correct
-	    user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+	    if (userDTO.getPassword() != null && !userDTO.getPassword().isBlank()) {
+	        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+	    }
 
 	    user = userRepository.save(user);
 
@@ -53,6 +55,7 @@ public class UserServiceImpl implements UserService{
 	public UserDTO loginUser(LoginDTO loginDTO) throws JobPortalException{
 	
 		User user= userRepository.findByEmail(loginDTO.getEmail()).orElseThrow(()-> new JobPortalException("USER_NOT_FOUND"));
+		System.out.println("user data"+user);
 		if(!passwordEncoder.matches(loginDTO.getPassword(),user.getPassword()))throw new JobPortalException("INVALID_CREDENTIALS");
 		return user.toDTO();
 	}

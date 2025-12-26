@@ -91,4 +91,14 @@ public class User {
 	    );
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", accountType="
+				+ accountType + ", getId()=" + getId() + ", getName()=" + getName() + ", getEmail()=" + getEmail()
+				+ ", getPassword()=" + getPassword() + ", getAccountType()=" + getAccountType() + ", toDTO()=" + toDTO()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
+	
+
 }
