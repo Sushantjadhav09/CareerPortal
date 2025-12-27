@@ -1,10 +1,16 @@
 import { Button, PasswordInput, TextInput } from '@mantine/core'
 import { useState } from 'react';
 import { At  } from 'tabler-icons-react'
-import { loginUser, registerUser } from '../Services/UserServices';
+// import { loginUser, registerUser } from '../Services/UserServices';
 import { loginValidation } from '../Services/FormValidation';
 import { notifications } from '@mantine/notifications';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { setJwt } from '../Slices/JwtSlice';
+import { loginUser } from '../Services/AuthService';
+import { useDispatch } from 'react-redux';
+
+
+
 
 
  const form = {
@@ -17,6 +23,10 @@ import { Link } from 'react-router-dom';
 const Login = () => {
   const [data, setData] = useState<{[key:string]:string}>(form);
   const [formError, setFormError] = useState<{[key:string]:string}>(form);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+ 
+
    const handleChange =(event:any)=>{
     console.log(event);
      setData({...data,[event.target.name]:event.target.value})
@@ -28,27 +38,42 @@ const Login = () => {
       if(newFormError[key])valid=false;
     }
     setFormError(newFormError);
-    if(valid){
-      loginUser(data).then((res)=>{
-        console.log(res);
-        notifications.show({
-               title: 'Login Successful',
-               message: "Welcome to the Jobhook",
-               color:"red",
-               withBorder:true,
-               className:"!border-red-500"
-             })
-      }).catch((err)=>{
-        console.log(err);
-        notifications.show({
-       title: 'Login Failed',
-       message: err.response.data.errorMessage,
-       color:"red",
-       withBorder:true,
-       className:"!border-red-500"
-     })
+    if (valid) {
+  loginUser(data)
+    .then((res) => {
+      notifications.show({
+        title: 'Login Successful',
+        message: "Welcome to the Jobhook",
+        color: "green",
+        withBorder: true,
       });
-    }
+      console.log("LOGIN RESPONSE:", res);
+      console.log("JWT TOKEN:", res.data?.jwt);
+
+
+      dispatch(setJwt(res.jwt));
+      setTimeout(() => {
+        navigate("/");
+      }, 4000);
+    })
+    .catch((err) => {
+      console.log("Login error:", err);
+
+      const errorMessage =
+        err?.response?.data?.errorMessage ||
+        err?.response?.data?.message ||
+        err?.message ||
+        "Login failed";
+
+      notifications.show({
+        title: 'Login Failed',
+        message: errorMessage,
+        color: "red",
+        withBorder: true,
+      });
+    });
+}
+
    }
   return (
     <div className="w-1/2 px-20 flex flex-col justify-center gap-3">
@@ -63,3 +88,11 @@ const Login = () => {
 }
 
 export default Login
+
+
+// function dispatch(arg0: { payload: string; type: "jwt/setJwt"; }) {
+//   throw new Error('Function not implemented.');
+// }
+// function dispatch() {
+//   throw new Error('Function not implemented.');
+// }

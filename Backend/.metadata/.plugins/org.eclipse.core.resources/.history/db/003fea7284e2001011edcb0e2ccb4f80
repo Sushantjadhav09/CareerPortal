@@ -56,9 +56,8 @@ public class JwtHelper {
     			.compact() ;	
     }
     
-    public boolean validateToken(String token, UserDetails userDetails) {
-        String username = getUserNameFromToken(token);
-        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    public boolean validateToken(String token, String username) {
+        final String tokenUsername = getUserNameFromToken(token);
+        return (tokenUsername.equals(username) && !isTokenExpired(token));
     }
-
 }

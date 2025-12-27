@@ -1621,3 +1621,18 @@
 2025-12-26 12:43:02,071 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-12-26 12:43:02,138 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-12-26 12:43:02,144 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Career Portal\Backend\CareerPT\src\test\resources
+2025-12-26 23:15:15,686 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2025-12-26 23:27:51,356 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-12.0.12; built: 2024-07-25T21:58:37.668Z; git: cc6f1b74db755fed228b50701ad967aeaa68e83f; jvm 21.0.4+7-LTS
+2025-12-26 23:27:51,459 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started oeje8n.ContextHandler$CoreContextHandler@56d4f3a3{/help,/help,b=null,a=AVAILABLE,h=oeje8n.ContextHandler$CoreContextHandler$CoreToNestedHandler@20c95939{STARTED}}
+2025-12-26 23:27:51,461 [Start Help Server] INFO  o.e.j.s.DefaultSessionIdManager - Session workerName=node0
+2025-12-26 23:27:51,511 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@5aa5514a{HTTP/1.1, (http/1.1)}{127.0.0.1:65196}
+2025-12-26 23:27:51,540 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started oejs.Server@1a7e684c{STARTING}[12.0.12,sto=0] @824088ms
+2025-12-26 23:28:16,756 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-12-26 23:28:16,777 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-12-26 23:28:16,785 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Career Portal\Backend\CareerPT\src\test\resources
+2025-12-26 23:28:19,636 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-12-26 23:28:19,643 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-12-26 23:28:19,651 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Career Portal\Backend\CareerPT\src\test\resources
+2025-12-27 00:14:37,053 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@1a7e684c{STOPPING}[12.0.12,sto=0]
+2025-12-27 00:14:37,061 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@5aa5514a{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
+2025-12-27 07:41:26,170 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
