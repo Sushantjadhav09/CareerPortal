@@ -44,10 +44,17 @@ public class JwtHelper {
         return expiration.before(new Date());
     }
     
-    public String generateToken(UserDetails userDetails) {
-    	Map<String, Object>claims = new HashMap<>();
-    	return doGenerateToken(claims,userDetails.getUsername());
+    public String generateToken(UserDetails userDatails) {
+
+        Map<String, Object> claims = new HashMap<>();
+        CustomUserDetails customUser = (CustomUserDetails)userDatails;
+        claims.put("id", customUser.getId());
+        claims.put("name", customUser.getName());
+        claims.put("accountType", customUser.getAccountType());
+
+        return doGenerateToken(claims, userDatails.getUsername());
     }
+
     
     private String doGenerateToken(Map<String,Object> claims, String subject) {
     	return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new 

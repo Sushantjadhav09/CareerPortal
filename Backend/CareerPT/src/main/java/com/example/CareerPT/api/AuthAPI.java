@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.CareerPT.JWT.AuthenticationRequest;
 import com.example.CareerPT.JWT.AuthenticationResponse;
+import com.example.CareerPT.JWT.CustomUserDetails;
 import com.example.CareerPT.JWT.JwtHelper;
+import com.example.CareerPT.JWT.MyUserDetailService;
 
 @RestController
 @CrossOrigin
@@ -23,8 +25,10 @@ import com.example.CareerPT.JWT.JwtHelper;
 @RequestMapping("/auth")
 public class AuthAPI {
 	
+	
 	@Autowired
-	private UserDetailsService userDetailsService;
+	private MyUserDetailService myUserDetailService;
+
 	
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -36,8 +40,8 @@ public class AuthAPI {
 	public ResponseEntity<?>createAuthenticationToken(@RequestBody AuthenticationRequest request){
 		authenticationManager.authenticate(new 
 				UsernamePasswordAuthenticationToken(request.getEmail(),request.getPassword()));
-		final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmail());
-		final String jwt = jwtHelper.generateToken(userDetails);
+		final UserDetails userDetails = myUserDetailService.loadUserByUsername(request.getEmail());
+		final String jwt = jwtHelper.generateToken((CustomUserDetails) userDetails);
 		return ResponseEntity.ok(new AuthenticationResponse(jwt));
 		
 	}

@@ -8,6 +8,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { setJwt } from '../Slices/JwtSlice';
 import { loginUser } from '../Services/AuthService';
 import { useDispatch } from 'react-redux';
+import { jwtDecode } from 'jwt-decode';
+
 
 
 
@@ -48,10 +50,10 @@ const Login = () => {
         withBorder: true,
       });
       console.log("LOGIN RESPONSE:", res);
-      console.log("JWT TOKEN:", res.data?.jwt);
-
-
+      console.log("JWT TOKEN:", res.jwt);
       dispatch(setJwt(res.jwt));
+      const decoded = jwtDecode(res.jwt);
+      console.log(decoded)
       setTimeout(() => {
         navigate("/");
       }, 4000);
@@ -90,9 +92,4 @@ const Login = () => {
 export default Login
 
 
-// function dispatch(arg0: { payload: string; type: "jwt/setJwt"; }) {
-//   throw new Error('Function not implemented.');
-// }
-// function dispatch() {
-//   throw new Error('Function not implemented.');
-// }
+
