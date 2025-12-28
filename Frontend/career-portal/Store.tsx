@@ -5,6 +5,7 @@ import jwtReducer from "./src/Slices/JwtSlice";
 export default configureStore({
   reducer: {
     jwt:jwtReducer
+    
   }
 });
 

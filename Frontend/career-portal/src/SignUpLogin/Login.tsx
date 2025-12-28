@@ -54,6 +54,7 @@ const Login = () => {
       dispatch(setJwt(res.jwt));
       const decoded = jwtDecode(res.jwt);
       console.log(decoded)
+      dispatch(setUser({...decoded,email:decoded.sub}));
       setTimeout(() => {
         navigate("/");
       }, 4000);
@@ -92,4 +93,8 @@ const Login = () => {
 export default Login
 
 
+
+function setUser(arg0: { email: string | undefined; iss?: string; sub?: string; aud?: string[] | string; exp?: number; nbf?: number; iat?: number; jti?: string; }): any {
+  throw new Error('Function not implemented.');
+}
 

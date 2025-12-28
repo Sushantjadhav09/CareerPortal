@@ -36,36 +36,15 @@ public class AuthAPI {
 	@Autowired
 	private JwtHelper jwtHelper;
 	
-//	@PostMapping("/login")
-//	public ResponseEntity<?>createAuthenticationToken(@RequestBody AuthenticationRequest request){
-//		authenticationManager.authenticate(new 
-//				UsernamePasswordAuthenticationToken(request.getEmail(),request.getPassword()));
-//		final UserDetails userDetails = myUserDetailService.loadUserByUsername(request.getEmail());
-//		final String jwt = jwtHelper.generateToken((CustomUserDetails) userDetails);
-//		return ResponseEntity.ok(new AuthenticationResponse(jwt));
-//		
-//	}
-	
 	@PostMapping("/login")
-	public ResponseEntity<?> createAuthenticationToken(
-	        @RequestBody AuthenticationRequest request) {
-
-	    authenticationManager.authenticate(
-	        new UsernamePasswordAuthenticationToken(
-	            request.getEmail(),
-	            request.getPassword()
-	        )
-	    );
-
-	    // 🔥 THIS IS THE KEY LINE
-	    CustomUserDetails userDetails =
-	    		(CustomUserDetails) myUserDetailService.loadUserByUsername(request.getEmail());
-
-	    String jwt = jwtHelper.generateToken(userDetails);
-
-	    return ResponseEntity.ok(new AuthenticationResponse(jwt));
+	public ResponseEntity<?>createAuthenticationToken(@RequestBody AuthenticationRequest request){
+		authenticationManager.authenticate(new 
+				UsernamePasswordAuthenticationToken(request.getEmail(),request.getPassword()));
+		final UserDetails userDetails = myUserDetailService.loadUserByUsername(request.getEmail());
+		final String jwt = jwtHelper.generateToken((CustomUserDetails) userDetails);
+		return ResponseEntity.ok(new AuthenticationResponse(jwt));
+		
 	}
-
 	
 
 }
