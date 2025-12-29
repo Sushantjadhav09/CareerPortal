@@ -19,6 +19,7 @@ import PostJobPage from './Pages/PostJobPage';
 import JobDescPage from './Pages/JobDescPage';
 import ApplyJobPage from './Pages/ApplyJobPage';
 import PostedJobPage from './Pages/PostedJobPage';
+import ProtectedRoute from './Services/ProtectedRoute';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -30,15 +31,16 @@ function App() {
       <Header/>
       <Divider size="xs" mx="md"/>
       <Routes>
-        <Route path='/find-jobs' element={<FindJobs/>}/>
-        <Route path='/find-talents' element={<FindTalentPage/>}/>
+        <Route path='/find-jobs' element={<ProtectedRoute allowedRoles={['CANDIDATE']}><FindJobs/></ProtectedRoute>}/>
+        <Route path='/find-talents' element={<ProtectedRoute allowedRoles={['COMPANY']}><FindTalentPage/></ProtectedRoute>}/>
         <Route path='/talent-profile' element={<TalentProfilePage/>}/>
         <Route path='/jobs/:id' element={<JobDescPage/>}/>
         <Route path='/apply-job/:id' element={<ApplyJobPage/>}/>
-        <Route path='/post-job' element={<PostJobPage/>}/>
-        <Route path='/posted-jobs' element={<PostedJobPage/>}/>
+        <Route path='/post-job' element={<ProtectedRoute allowedRoles={['COMPANY']}><PostJobPage/></ProtectedRoute>}/>
+        <Route path='/posted-jobs' element={<ProtectedRoute allowedRoles={['COMPANY']}><PostedJobPage/></ProtectedRoute>}/>
         <Route path='/signup' element={<SignUpPage/>}/>
         <Route path='/login' element={<SignUpPage/>}/>
+        <Route path='/unauthorized' element={<SignUpPage/>}/>
 
 
         <Route path='*' element={<Homepage/>} />

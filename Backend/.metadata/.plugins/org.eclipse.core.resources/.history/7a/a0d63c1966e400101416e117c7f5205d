@@ -21,6 +21,5 @@ INVALID_CREDENTIALS=Invalid credentials
 JOB_NOT_FOUND=Job not found.
 JOB_APPLIED_ALREADY=Job applied already.
 
-jwt.secret=careerpt_super_secure_secret_key_2025_very_strong
+jwt.secret=careerpt_secret_key_1234567890
 jwt.expiration=3600000
-

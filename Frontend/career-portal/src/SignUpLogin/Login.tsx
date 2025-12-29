@@ -5,7 +5,7 @@ import { At  } from 'tabler-icons-react'
 import { loginValidation } from '../Services/FormValidation';
 import { notifications } from '@mantine/notifications';
 import { Link, useNavigate } from 'react-router-dom';
-import { setJwt } from '../Slices/JwtSlice';
+import { setJwt, setUser } from '../Slices/JwtSlice';
 import { loginUser } from '../Services/AuthService';
 import { useDispatch } from 'react-redux';
 import { jwtDecode } from 'jwt-decode';
@@ -54,7 +54,7 @@ const Login = () => {
       dispatch(setJwt(res.jwt));
       const decoded = jwtDecode(res.jwt);
       console.log(decoded)
-      dispatch(setUser({...decoded,email:decoded.sub}));
+      dispatch(setUser({...decoded,sub:decoded.sub}));
       setTimeout(() => {
         navigate("/");
       }, 4000);
@@ -94,7 +94,7 @@ export default Login
 
 
 
-function setUser(arg0: { email: string | undefined; iss?: string; sub?: string; aud?: string[] | string; exp?: number; nbf?: number; iat?: number; jti?: string; }): any {
-  throw new Error('Function not implemented.');
-}
+// function setUser(arg0: { email: string | undefined; iss?: string; sub?: string; aud?: string[] | string; exp?: number; nbf?: number; iat?: number; jti?: string; }): any {
+//   throw new Error('Function not implemented.');
+// }
 

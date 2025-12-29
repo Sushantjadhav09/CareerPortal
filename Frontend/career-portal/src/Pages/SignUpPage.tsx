@@ -37,7 +37,7 @@ useEffect(() => {
                     <Anchor className='h-16 w-16 items-center' strokeWidth={3}/>
                     <div className='text-6xl font-semibold '>JobHook</div>
                  </div>
-                 <div className='text-2xl text-gray-200 font-semibold'>Find the jon made for you</div>
+                 <div className='text-2xl text-gray-200 font-semibold'>Find the job made for you</div>
             </div>
         <SignUp/>
         </div>
