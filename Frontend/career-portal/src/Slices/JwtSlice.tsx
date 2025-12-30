@@ -1,4 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { jwtDecode } from "jwt-decode";
 
 export interface JwtUser {
   sub?: string;        // email
@@ -25,6 +26,7 @@ const jwtSlice = createSlice({
     setJwt: (state, action: PayloadAction<string>) => {
       localStorage.setItem("token", action.payload);
       state.jwt = action.payload;
+       state.user = jwtDecode<JwtUser>(action.payload);
     },
 
     removeJwt: (state) => {

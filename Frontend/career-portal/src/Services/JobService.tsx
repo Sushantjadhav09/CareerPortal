@@ -23,13 +23,13 @@ const getJobById = async(id:any)=>{
 }
 
 const applyJob =async (id:any, applicant:any )=>{
-    return axios.post(`${base_url}apply/${id}`,applicant)
+    return axiosInstance.post(`/jobs/apply/${id}`,applicant)
     .then(result => result.data)
     .catch(error => {throw error;});
 }
 
 const getAllApplicants = async()=>{
-    return axios.get(`${base_url}getAllapplicants`)
+    return axiosInstance.get(`/jobs/getAllapplicants`)
     .then(result => result.data)
     .catch(error => {throw error})
 }

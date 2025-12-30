@@ -2,9 +2,14 @@ import { Avatar,Button,Indicator } from '@mantine/core'
 import {  Bell, Settings, Anchor } from 'tabler-icons-react'
 import NavLinks from './NavLinks'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { IconArrowLeft } from '@tabler/icons-react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Text } from '@mantine/core';
+
+// import { useDispatch, useSelector } from 'react-redux'
 
 const Header = () => {
+ const dispatch = useDispatch();
+ const user = useSelector((state: any) => state.jwt.user);
   const location = useLocation();
   const navigate = useNavigate();
   return ( location.pathname!="/signup"&& location.pathname!="/login"?
@@ -16,9 +21,8 @@ const Header = () => {
         {NavLinks()}
         <div className='flex gap-3 items-center'>
             <div className='flex gap-3 items-center' >
-            <Button className='absolute!  top-5 right-70' color="yellow" onClick={()=>navigate("/signup")}  variant="outline">Login</Button>
-              <div>
-                Sushant</div>
+            <Button className='absolute!  top-5 right-80' color="yellow" onClick={()=>navigate("/signup")}  variant="outline">Login</Button>
+              <Text fw={500}>{user?.name}</Text>
                 <Avatar src="/avatar.png" alt="it's me" />
             </div>
             <div className='bg-gray-700 p-1.5 rounded-full'>

@@ -20,6 +20,7 @@ import JobDescPage from './Pages/JobDescPage';
 import ApplyJobPage from './Pages/ApplyJobPage';
 import PostedJobPage from './Pages/PostedJobPage';
 import ProtectedRoute from './Services/ProtectedRoute';
+import UnauthorizedPage from './Pages/UnauthorizedPage';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -40,7 +41,7 @@ function App() {
         <Route path='/posted-jobs' element={<ProtectedRoute allowedRoles={['COMPANY']}><PostedJobPage/></ProtectedRoute>}/>
         <Route path='/signup' element={<SignUpPage/>}/>
         <Route path='/login' element={<SignUpPage/>}/>
-        <Route path='/unauthorized' element={<SignUpPage/>}/>
+        <Route path="/unauthorized" element={<UnauthorizedPage />} />
 
 
         <Route path='*' element={<Homepage/>} />

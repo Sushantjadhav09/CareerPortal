@@ -9,11 +9,7 @@ import { setJwt, setUser } from '../Slices/JwtSlice';
 import { loginUser } from '../Services/AuthService';
 import { useDispatch } from 'react-redux';
 import { jwtDecode } from 'jwt-decode';
-
-
-
-
-
+import axios from 'axios';
 
  const form = {
     
@@ -27,7 +23,24 @@ const Login = () => {
   const [formError, setFormError] = useState<{[key:string]:string}>(form);
   const navigate = useNavigate();
   const dispatch = useDispatch();
- 
+  
+
+  
+const handleLogin = async () => {
+const res = await axios.post("http://localhost:8080/auth/login");
+
+  const token = res.data.token; 
+  dispatch(setJwt(token));
+
+  const decoded: any = jwtDecode(token);
+
+  dispatch(setUser({
+    name: decoded.name,
+    sub: decoded.sub,
+    accountType: decoded.accountType,
+    exp: decoded.exp,
+  }));
+};
 
    const handleChange =(event:any)=>{
     console.log(event);
@@ -57,7 +70,7 @@ const Login = () => {
       dispatch(setUser({...decoded,sub:decoded.sub}));
       setTimeout(() => {
         navigate("/");
-      }, 4000);
+      }, 3000);
     })
     .catch((err) => {
       console.log("Login error:", err);
