@@ -2,7 +2,6 @@ import { jwtDecode } from "jwt-decode";
 import type { JSX } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import Header from "../Header/Header";
 
 interface ProtectedRouteProps {
   children: JSX.Element;
