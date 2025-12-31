@@ -56,22 +56,43 @@ const res = await axios.post("http://localhost:8080/auth/login");
     if (valid) {
   loginUser(data)
     .then((res) => {
-      notifications.show({
-        title: 'Login Successful',
-        message: "Welcome to the Jobhook",
-        color: "green",
-        withBorder: true,
+  dispatch(setJwt(res.jwt));
+
+  const decoded: any = jwtDecode(res.jwt);
+  dispatch(setUser({
+    name: decoded.name,
+    sub: decoded.sub,
+    accountType: decoded.accountType,
+    exp: decoded.exp,
+  }));
+
+  let seconds = 4;
+
+  const notificationId = notifications.show({
+    id: 'login-redirect',
+    title: 'Login Successful 🎉',
+    message: `Redirecting to home page in ${seconds} seconds...`,
+    color: 'green',
+    withBorder: true,
+    autoClose: false,
+  });
+
+  const interval = setInterval(() => {
+    seconds--;
+
+    if (seconds === 0) {
+      clearInterval(interval);
+      notifications.hide(notificationId);
+      navigate('/');
+    } else {
+      notifications.update({
+        id: notificationId,
+        message: `Welcome ${decoded.name} ,Redirecting to home page in ${seconds} seconds...`,
       });
-      console.log("LOGIN RESPONSE:", res);
-      console.log("JWT TOKEN:", res.jwt);
-      dispatch(setJwt(res.jwt));
-      const decoded = jwtDecode(res.jwt);
-      console.log(decoded)
-      dispatch(setUser({...decoded,sub:decoded.sub}));
-      setTimeout(() => {
-        navigate("/");
-      }, 3000);
-    })
+    }
+  }, 1000);
+})
+
     .catch((err) => {
       console.log("Login error:", err);
 
