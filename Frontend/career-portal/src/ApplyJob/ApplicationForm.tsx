@@ -10,7 +10,8 @@ import { notifications } from "@mantine/notifications";
 const ApplicationForm = () => {
     const {id}= useParams();
     const [preview, setPreview]=useState(false)
-    const [submit, setSubmit] = useState(false)    
+    const [submit, setSubmit] = useState(false) 
+    const navigate = useNavigate();   
     const handlePreveiw = ()=>{
         form.validate();
         window.scrollTo({top:0, behavior:'smooth'})
@@ -28,6 +29,9 @@ const ApplicationForm = () => {
                 message: 'Your application has been sent successfully 🎉',
                 color: 'green',
               });
+              setTimeout(() => {
+                navigate("/");
+                 }, 3000);
        }).catch((err)=>{
         setSubmit(false);
         notifications.show({

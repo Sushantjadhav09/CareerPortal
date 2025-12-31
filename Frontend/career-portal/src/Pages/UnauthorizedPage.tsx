@@ -1,24 +1,43 @@
-import { Button, Center, Stack, Text, Title } from '@mantine/core';
+import { Button, Center, Stack, Text, Title, Box } from '@mantine/core';
+import { IconLock } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
 
 const UnauthorizedPage = () => {
   const navigate = useNavigate();
 
   return (
-    <Center className='bg-gray-800' h="80vh">
-      <Stack align="center" gap="md">
-        <Title order={1} c="red">
-          403 – Unauthorized 🚫
-        </Title>
+    <Center h="80vh">
+      <Box
+        bg="dark.7"
+        p="xl"
+        w={520}
+        style={{ textAlign: 'center' }}
+      >
+        <Stack gap="md" align="center">
+          <IconLock size={64} color="gold" />
 
-        <Text size="lg" c="dimmed">
-          You don’t have permission to access this page.
-        </Text>
+          <Title order={2}>
+            This Page Isn’t Available For You🔒
+          </Title>
 
-        <Button color="yellow" onClick={() => navigate('/')}>
-          Go to Home
-        </Button>
-      </Stack>
+          <Text size="md" c="dimmed">
+            You’re logged in, but this page is meant for a different type of account.
+          </Text>
+
+          <Text size="sm" c="dimmed">
+            If you believe this is a mistake, please switch accounts or go back to the home page.
+          </Text>
+
+          <Button
+            color="yellow"
+            fullWidth
+            mt="md"
+            onClick={() => navigate('/')}
+          >
+            Go to Home
+          </Button>
+        </Stack>
+      </Box>
     </Center>
   );
 };
