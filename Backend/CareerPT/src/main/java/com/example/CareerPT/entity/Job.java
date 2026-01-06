@@ -10,9 +10,12 @@ import com.example.CareerPT.enums.JobStatus;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -24,6 +27,8 @@ public class Job {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String jobTitle;
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "company_id", nullable = false)
 	private String company;
 	@OneToMany(mappedBy = "job", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Applicant> applicants;
@@ -37,6 +42,7 @@ public class Job {
 	@ElementCollection
 	private List<String>skillsRequired;
 	private JobStatus jobStatus;
+	
 	
 	public Job(){};
 

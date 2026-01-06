@@ -83,7 +83,8 @@ public class JobServiceImpl implements JobService{
 	    Applicant applicant = applicantDTO.toEntity();
 	    applicant.setApplicationStatus(ApplicationStatus.APPLIED);
 	    applicant.setTimestamp(LocalDateTime.now());
-
+	    applicant.setJob(job);
+	    
 	    applicants.add(applicant);
 	    job.setApplicants(applicants);
 

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Base64;
 
 import com.example.CareerPT.entity.Applicant;
+import com.example.CareerPT.entity.Job;
 import com.example.CareerPT.enums.ApplicationStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -29,11 +30,13 @@ public class ApplicantDTO {
     private String coverLetter;
     private LocalDateTime timestamp;
     private ApplicationStatus applicationStatus;
+    private Job job;
+
     
     public ApplicantDTO() {};
 
    public ApplicantDTO(Long applicantId, String name, String email, Long phone, String website, String resume,
-			String coverLetter, LocalDateTime timestamp, ApplicationStatus applicationStatus) {
+			String coverLetter, LocalDateTime timestamp, ApplicationStatus applicationStatus,Job job) {
 		super();
 		this.applicantId = applicantId;
 		this.name = name;
@@ -44,6 +47,7 @@ public class ApplicantDTO {
 		this.coverLetter = coverLetter;
 		this.timestamp = timestamp;
 		this.applicationStatus = applicationStatus;
+		this.job = job;
 	}
 
 
@@ -135,12 +139,22 @@ public Long getApplicantId() {
 	public void setApplicationStatus(ApplicationStatus applicationStatus) {
 		this.applicationStatus = applicationStatus;
 	}
+	
+	public Job getJob() {
+		return job;
+	}
+
+
+
+	public void setJob(Job job ) {
+		this.job = job;
+	}
 
 
 public Applicant toEntity() {
 	return new Applicant(this.applicantId,this.name,this.email,this.phone,this.website
     		,this.resume!=null?Base64.getDecoder().decode(this.resume):null,this.coverLetter,
-    				this.timestamp,this.applicationStatus);
+    				this.timestamp,this.applicationStatus,this.job);
    }
     
 }

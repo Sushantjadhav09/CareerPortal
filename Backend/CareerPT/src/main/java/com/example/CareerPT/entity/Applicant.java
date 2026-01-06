@@ -49,12 +49,13 @@ public class Applicant {
     @JoinColumn(name = "job_id") // FK column in applicants table
     @JsonIgnore // prevents infinite recursion in JSON
     private Job job;
+   
 
     
     public Applicant() {};
 
    public Applicant(Long applicantId, String name, String email, Long phone, String website, byte[] resume,
-			String coverLetter, LocalDateTime timestamp, ApplicationStatus applicationStatus) {
+			String coverLetter, LocalDateTime timestamp, ApplicationStatus applicationStatus,Job job) {
 		super();
 		this.applicantId = applicantId;
 		this.name = name;
@@ -65,6 +66,7 @@ public class Applicant {
 		this.coverLetter = coverLetter;
 		this.timestamp = timestamp;
 		this.applicationStatus = applicationStatus;
+		this.job = job;
 	}
 
 
@@ -174,12 +176,23 @@ public Long getApplicantId() {
 	public void setApplicationStatus(ApplicationStatus applicationStatus) {
 		this.applicationStatus = applicationStatus;
 	}
+	
+	public Job getJob() {
+		return job;
+	}
+
+
+
+	public void setJob(Job job ) {
+		this.job = job;
+	}
+
 
 
 
 public ApplicantDTO toDTO() {
 	    return new ApplicantDTO(this.applicantId,this.name,this.email,this.phone,this.website
-	    		,this.resume!=null?Base64.getEncoder().encodeToString(this.resume):null,this.coverLetter,this.timestamp,this.applicationStatus);
+	    		,this.resume!=null?Base64.getEncoder().encodeToString(this.resume):null,this.coverLetter,this.timestamp,this.applicationStatus,this.job);
    }
     
 }
