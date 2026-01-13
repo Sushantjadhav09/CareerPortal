@@ -13,7 +13,7 @@ const PostJob = () => {
         validateInputOnChange:true,
         initialValues:{
             jobTitle:'',
-            company:'',
+            // company:'',
             experience:'',
             jobtype:'',
             location:'',
@@ -25,7 +25,7 @@ const PostJob = () => {
         },
         validate:{
             jobTitle: isNotEmpty('Title  is required'),
-            company: isNotEmpty('company  is required'),
+            // company: isNotEmpty('company  is required'),
             experience: isNotEmpty('experience is required'),
             jobtype: isNotEmpty('jobtype  is required'),
             location: isNotEmpty('location  is required'),
@@ -63,7 +63,7 @@ const PostJob = () => {
     <div className="flex flex-col gap-5">   
         <div className="flex gap-10 [&>*]:w-1/2">
             <SelectInput form={form} name="jobTitle" {...select[0]}/>
-            <SelectInput form={form} name="company" {...select[1]}/>
+            {/* <SelectInput form={form} name="company" {...select[1]}/> */}
         </div>
         <div className="flex gap-10 [&>*]:w-1/2">
             <SelectInput form={form} name="experience" {...select[2]}/>

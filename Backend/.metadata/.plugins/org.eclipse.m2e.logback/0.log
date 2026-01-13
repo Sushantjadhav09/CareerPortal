@@ -1859,3 +1859,40 @@
 2026-01-05 11:31:29,455 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Career Portal\Backend\CareerPT\src\test\resources
 2026-01-05 12:46:56,027 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@4ac7a5bd{STOPPING}[12.0.12,sto=0]
 2026-01-05 12:46:56,039 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@2d282b5f{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
+2026-01-06 10:47:23,552 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2026-01-06 10:52:07,937 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-06 10:52:07,967 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-06 10:52:07,974 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Career Portal\Backend\CareerPT\src\test\resources
+2026-01-06 10:53:22,268 [Worker-13: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-06 10:53:22,277 [Worker-13: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-06 10:53:22,285 [Worker-13: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Career Portal\Backend\CareerPT\src\test\resources
+2026-01-06 11:23:41,065 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-12.0.12; built: 2024-07-25T21:58:37.668Z; git: cc6f1b74db755fed228b50701ad967aeaa68e83f; jvm 21.0.4+7-LTS
+2026-01-06 11:23:41,150 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started oeje8n.ContextHandler$CoreContextHandler@33dc6f36{/help,/help,b=null,a=AVAILABLE,h=oeje8n.ContextHandler$CoreContextHandler$CoreToNestedHandler@2982228{STARTED}}
+2026-01-06 11:23:41,152 [Start Help Server] INFO  o.e.j.s.DefaultSessionIdManager - Session workerName=node0
+2026-01-06 11:23:41,195 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@527751a3{HTTP/1.1, (http/1.1)}{127.0.0.1:54099}
+2026-01-06 11:23:41,227 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started oejs.Server@311b6dd5{STARTING}[12.0.12,sto=0] @2224250ms
+2026-01-06 11:25:15,093 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-06 11:25:15,115 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-06 11:25:15,124 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Career Portal\Backend\CareerPT\src\test\resources
+2026-01-08 12:37:37,051 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2026-01-08 12:46:50,084 [Worker-13: Launching CareerPT - CareerPtApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-08 12:46:50,124 [Worker-13: Launching CareerPT - CareerPtApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-08 12:46:50,134 [Worker-13: Launching CareerPT - CareerPtApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Career Portal\Backend\CareerPT\src\test\resources
+2026-01-09 16:26:19,455 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2026-01-09 17:19:28,896 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-09 17:19:28,952 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-09 17:19:28,962 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Career Portal\Backend\CareerPT\src\test\resources
+2026-01-12 09:34:42,777 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2026-01-12 09:43:35,967 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-12 09:43:36,022 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-12 09:43:36,033 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Career Portal\Backend\CareerPT\src\test\resources
+2026-01-12 09:47:55,240 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-12 09:47:55,249 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-12 09:47:55,256 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Career Portal\Backend\CareerPT\src\test\resources
+2026-01-12 09:49:56,067 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-12 09:49:56,079 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-12 09:49:56,087 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Career Portal\Backend\CareerPT\src\test\resources
+2026-01-12 09:50:29,473 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-12 09:50:29,483 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2026-01-12 09:50:29,489 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory D:\Career Portal\Backend\CareerPT\src\test\resources
+2026-01-13 11:42:25,417 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.

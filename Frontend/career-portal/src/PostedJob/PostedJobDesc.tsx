@@ -6,14 +6,14 @@ import TalentCard from '../FindTalent/TalentCard'
 import JobDescPage from '../Pages/JobDescPage'
 import { IconHeart, IconMapPin, IconCalendarMonth } from '@tabler/icons-react'
 import type { Link } from 'tabler-icons-react'
-import { getAllApplicants } from '../Services/JobService'
+import { getAllApplicants ,getCompanyApplicants} from '../Services/JobService'
 import ApplicantCard from '../Applicants/ApplicantCard'
 
 const PostedJobDesc = () => {
    const [applicant, setapplicant] = useState<any[]>([]);
 
  useEffect(() => {
-  getAllApplicants()
+  getCompanyApplicants()
   .then((data) => {
     console.log("API DATA 👉", data); // ✅
     setapplicant(Array.isArray(data) ? data : []);

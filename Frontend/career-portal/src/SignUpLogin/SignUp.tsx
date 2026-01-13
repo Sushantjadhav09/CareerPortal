@@ -58,7 +58,7 @@ const SignUp = () => {
         console.log(res);
         notifications.show({
        title: 'Registered Successfully',
-       message: 'Redirecting to login page..',
+       message: 'Welocome To JoobHook..',
        color:"teal",
        withBorder:true,
        className:"!border-green-500"

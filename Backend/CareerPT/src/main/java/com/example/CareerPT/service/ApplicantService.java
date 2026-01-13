@@ -18,5 +18,13 @@ public class ApplicantService {
 	public List<Applicant> getAllapplicant() {
 		return applicantRepository.findAll();
 	}
+	public List<ApplicantDTO> getApplicantsForCompany(String company) {
+	    return applicantRepository
+	            .findApplicantsByCompany(company)
+	            .stream()
+	            .map(Applicant::toDTO)
+	            .toList();
+	}
+
 
 }

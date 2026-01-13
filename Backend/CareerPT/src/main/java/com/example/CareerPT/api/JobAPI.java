@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +39,9 @@ public class JobAPI {
 		    consumes = MediaType.APPLICATION_JSON_VALUE,
 		    produces = MediaType.APPLICATION_JSON_VALUE
 		)
-	public ResponseEntity<JobDTO>postJOb(@RequestBody @Valid JobDTO jobDTO) throws JobPortalException{
+	public ResponseEntity<JobDTO>postJOb(@RequestBody @Valid JobDTO jobDTO ,Authentication authentication) throws JobPortalException{
+		String companyEmail = authentication.getName(); // 🔥 JWT.sub
+		jobDTO.setCompany(companyEmail);
 		return new ResponseEntity<>(jobService.postJob(jobDTO),HttpStatus.CREATED);
 	}
 	

@@ -31,5 +31,10 @@ const getAllApplicants = async()=>{
     .then(result => result.data)
     .catch(error => {throw error})
 }
+const getCompanyApplicants = async()=>{
+    return axiosInstance.get(`/jobs/company/applicants`)
+    .then(result => result.data)
+    .catch(error => {throw error})
+}
 
-export{postJob, getAllJobs, getJobById, applyJob,getAllApplicants}
+export{postJob, getAllJobs, getJobById, applyJob,getAllApplicants,getCompanyApplicants}
