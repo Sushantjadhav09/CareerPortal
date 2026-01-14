@@ -9,6 +9,11 @@ type Applicant = {
   applicationStatus: string;
 };
 const JobCards = (props:any) => {
+  const getCompanyNameFromEmail = (email: string) => {
+  if (!email) return "Company";
+  return email.split("@")[0]; // google@gmail.com → google
+};
+
    const applicants: Applicant[] = Array.isArray(props.applicants)
     ? props.applicants
     : [];
