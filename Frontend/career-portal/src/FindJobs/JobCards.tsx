@@ -13,6 +13,13 @@ const JobCards = (props:any) => {
   if (!email) return "Company";
   return email.split("@")[0]; // google@gmail.com → google
 };
+const formatCompanyName = (name: string) =>
+  name.charAt(0).toUpperCase() + name.slice(1);
+const companyKey = getCompanyNameFromEmail(props.company);
+console.log("Company:", props.company);
+console.log("Company key:", companyKey);
+console.log("Image path:", `/Icons/${companyKey}.png`);
+
 
    const applicants: Applicant[] = Array.isArray(props.applicants)
     ? props.applicants
@@ -21,12 +28,21 @@ const JobCards = (props:any) => {
         <div className='flex justify-between '>
             <div className='flex gap-2 items-center '>
                 <div className='p-2 bg-gray-600 rounded-md '>
-                    <img className='h-7' src={`/Icons/${props.company}.png`} alt="" />
+                    <img className='h-7' src={`/Icons/${companyKey}.png`} alt="" />
+                    {/* <img
+  className="h-7"
+  src={`/Icons/${companyKey}.png`}
+  alt={companyKey}
+  onError={(e) => {
+    e.currentTarget.src = "/Icons/default.png";
+  }}
+/> */}
+
                 </div>
                 <div>
                     <div className='font-semibold'>{props.jobTitle}</div>
               <div className='text-xs'>
-                {props.company} • {applicants.length} Applicants
+                {formatCompanyName(companyKey)} • {applicants.length} Applicants
               </div>
                 </div>
             </div>
