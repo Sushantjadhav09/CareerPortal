@@ -21,6 +21,6 @@ public interface UserService {
 	
 	public UserDTO getUserByEmail(String email)throws JobPortalException;
 
-	public Boolean sendOtp(String email) throws Exception;
+	public void sendOtp(String email);
 
 }

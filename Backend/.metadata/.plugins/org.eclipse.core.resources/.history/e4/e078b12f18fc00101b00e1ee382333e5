@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +26,6 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
-	 private final JavaMailSender mailSender;
 
 	@Override
 	public UserDTO registerUser(UserDTO userDTO) throws JobPortalException {
@@ -76,11 +73,10 @@ public class UserServiceImpl implements UserService{
 
 
 	@Override
-	public Boolean sendOtp(String email) throws Exception {
+	public Boolean sendOtp(String email) throws JobPortalException {
 		User user= userRepository.findByEmail(email).orElseThrow(()-> new 
 				JobPortalException("USER_NOT_FOUND"));
-			MimeMessage mm = mailSender.createMimeMessage();
-			MimeMessageHelper message = new MimeMessageHelper(mm,true);
+			MimeMessage mm = 
 	}
 
 }

@@ -4,10 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +13,6 @@ import com.example.CareerPT.entity.User;
 import com.example.CareerPT.exception.JobPortalException;
 import com.example.CareerPT.repository.UserRepository;
 
-import jakarta.mail.internet.MimeMessage;
-
 @Service(value="userService")
 public class UserServiceImpl implements UserService{
 	
@@ -27,8 +21,6 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
-	 private final JavaMailSender mailSender;
 
 	@Override
 	public UserDTO registerUser(UserDTO userDTO) throws JobPortalException {
@@ -76,11 +68,10 @@ public class UserServiceImpl implements UserService{
 
 
 	@Override
-	public Boolean sendOtp(String email) throws Exception {
-		User user= userRepository.findByEmail(email).orElseThrow(()-> new 
+	public Boolean sendOtp(String email) throws JobPortalException {
+		User user= userRepository.findByEmail(loginDTO.getEmail()).orElseThrow(()-> new 
 				JobPortalException("USER_NOT_FOUND"));
-			MimeMessage mm = mailSender.createMimeMessage();
-			MimeMessageHelper message = new MimeMessageHelper(mm,true);
+
 	}
 
 }
