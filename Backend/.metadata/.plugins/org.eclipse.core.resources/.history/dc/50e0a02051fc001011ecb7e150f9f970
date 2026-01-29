@@ -1,0 +1,9 @@
+package com.example.CareerPT.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.CareerPT.entity.OTP;
+
+public interface OTPrepository extends JpaRepository<OTP, String>{
+
+}

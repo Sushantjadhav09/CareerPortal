@@ -1,0 +1,5 @@
+package com.example.CareerPT.repository;
+
+public interface OTPrepository {
+
+}
